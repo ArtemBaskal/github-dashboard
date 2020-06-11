@@ -1,5 +1,5 @@
-import axios from 'axios'
-import {Repo} from 'features/reposList/types';
+import axios from 'axios';
+import { Repo } from 'features/reposList/types';
 
 const baseUrl = 'https://api.github.com/search/repositories';
 
@@ -9,19 +9,19 @@ interface GetReposResponse {
     total_count: number,
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export const fetchRepos = async (q: string): Promise<Repo[]> => {
-    try {
-        const response = await axios.get<GetReposResponse>(baseUrl,
-            {
-                params: {
-                    q,
-                },
-            }
-        );
+  try {
+    const response = await axios.get<GetReposResponse>(baseUrl,
+      {
+        params: {
+          q,
+        },
+      });
 
-        return response.data.items;
-    } catch (e) {
-        console.error(e)
-        return e.message;
-    }
-}
+    return response.data.items;
+  } catch (e) {
+    console.error(e);
+    return e.message;
+  }
+};
