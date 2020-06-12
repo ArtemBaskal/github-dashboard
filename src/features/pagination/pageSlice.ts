@@ -4,7 +4,7 @@ import { REPOS_PER_PAGE } from '../../utils/consts';
 
 type IRepos = { totalPages?: number, currentPage?: number };
 
-const initialState: IRepos = { totalPages: 1, currentPage: localStorage.currentPage || 1 };
+const initialState: IRepos = { totalPages: 1, currentPage: Number(localStorage.currentPage) || 1 };
 
 const pageSlice = createSlice({
   name: 'pages',
