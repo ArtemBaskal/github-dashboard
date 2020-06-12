@@ -10,11 +10,12 @@ type IProps = {
 const ReposList = ({ isSearching }: IProps): JSX.Element => {
   const repos = useSelector((state: RootState) => state.repos);
 
-  if (isSearching) {
-    return <div>Searching...</div>;
-  }
-
-  return <ul>{repos && repos.map(({ id, name }) => <ReposListItem key={id} name={name} />)}</ul>;
+  return (
+    <>
+      {isSearching && <div>Searching...</div>}
+      <ul>{repos && repos.map(({ id, name }) => <ReposListItem key={id} name={name} />)}</ul>
+    </>
+  );
 };
 
 export default ReposList;
