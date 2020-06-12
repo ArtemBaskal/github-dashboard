@@ -36,7 +36,7 @@ export type Repo = {
     has_wiki?: true
     homepage?: null
     hooks_url?: string,
-    html_url?: string,
+    html_url: string,
     id: number,
     issue_comment_url?: string,
     issue_events_url?: string,
@@ -71,7 +71,7 @@ export type Repo = {
     tags_url?: string,
     teams_url?: string,
     trees_url?: string,
-    updated_at?: string,
+    updated_at: string,
     url?: string,
     watchers?: number,
     watchers_count?: number,

@@ -1,0 +1,19 @@
+import { REPOS_PER_PAGE } from './consts';
+
+export const getPageNumbers = (page: number, totalPages: number) => {
+  const shift = Math.floor(REPOS_PER_PAGE / 2);
+  const maybeLeftmost = page > shift ? page - shift : 0;
+  const maybeRightmost = maybeLeftmost + REPOS_PER_PAGE;
+
+  const rightmost = maybeRightmost < totalPages ? maybeRightmost : totalPages;
+  const rightmostShifted = rightmost > REPOS_PER_PAGE ? rightmost - REPOS_PER_PAGE : rightmost;
+
+  const leftmost = maybeLeftmost < rightmostShifted ? maybeLeftmost : rightmostShifted;
+
+  const pages = [];
+  for (let i = leftmost; i < rightmost; i += 1) {
+    pages.push(i + 1);
+  }
+
+  return pages;
+};

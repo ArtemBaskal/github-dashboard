@@ -1,22 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { AppThunk, AppDispatch } from 'app/store';
-import { fetchRepos } from 'api/jsonstore';
+import { fetchRepos } from 'api/githubAPI';
 import { Repo } from 'features/reposList/types';
+import { setTotalPages } from '../pagination/pageSlice';
 
-const initialState: Repo[] = [];
+type IRepos = Repo[];
+
+const initialState: IRepos = [];
 
 const reposSlice = createSlice({
   name: 'repos',
   initialState,
   reducers: {
-    fetchRepos: (state, action: PayloadAction<Repo[]>) => action.payload,
+    fetchRepos: (state, action: PayloadAction<Repo[]>): IRepos => action.payload,
   },
 });
 
-export const loadRepos = (q: string): AppThunk => async (dispatch: AppDispatch) => {
-  const repos = await fetchRepos(q);
-  dispatch(reposSlice.actions.fetchRepos(repos));
+export const loadRepos = (q: string, page: number): AppThunk => async (dispatch: AppDispatch) => {
+  const repos = await fetchRepos(q, page);
+  dispatch(reposSlice.actions.fetchRepos(repos.items));
+  dispatch(setTotalPages(repos.total_count));
 };
 
 export default reposSlice.reducer;
