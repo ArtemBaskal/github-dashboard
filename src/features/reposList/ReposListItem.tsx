@@ -1,5 +1,6 @@
 import React from 'react';
 import { Repo } from './types';
+import { formatDate } from '../../utils/helpers';
 
 const ReposListItem = ({
   name, stargazers_count, updated_at, html_url,
@@ -7,8 +8,12 @@ const ReposListItem = ({
   <>
     <li>
       <div>{name}</div>
-      <div>{`Количестов звёзд: ${stargazers_count}`}</div>
-      <div>{`Последний коммит: ${updated_at}`}</div>
+      <div>
+        {stargazers_count}
+        {' '}
+        &#9734;
+      </div>
+      <div>{`Последний коммит: ${formatDate(updated_at)}`}</div>
       <a href={html_url}>{html_url}</a>
     </li>
     <br />

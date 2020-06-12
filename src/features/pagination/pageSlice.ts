@@ -4,7 +4,7 @@ import { REPOS_PER_PAGE } from '../../utils/consts';
 
 type IRepos = { totalPages?: number, currentPage?: number };
 
-const initialState: IRepos = { totalPages: 1, currentPage: 1 };
+const initialState: IRepos = { totalPages: 1, currentPage: localStorage.currentPage || 1 };
 
 const pageSlice = createSlice({
   name: 'pages',
@@ -12,6 +12,14 @@ const pageSlice = createSlice({
   reducers: {
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
+
+      try {
+        localStorage.currentPage = action.payload;
+      } catch (e) {
+        console.error(e);
+        console.error('Ошибка! В localStorage превышен лимит, оно будет очищено.');
+        localStorage.clear();
+      }
 
       return state;
     },

@@ -1,5 +1,6 @@
-import { REPOS_PER_PAGE } from './consts';
+import { REPOS_PER_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from './consts';
 
+// TODO: simplify
 export const getPageNumbers = (page: number, totalPages: number) => {
   const shift = Math.floor(REPOS_PER_PAGE / 2);
   const maybeLeftmost = page > shift ? page - shift : 0;
@@ -17,3 +18,7 @@ export const getPageNumbers = (page: number, totalPages: number) => {
 
   return pages;
 };
+
+export const formatDate = (
+  dateTime: string, options = DEFAULT_DATE_FORMAT_OPTIONS,
+) => new Date(dateTime).toLocaleString(navigator.language, options);
