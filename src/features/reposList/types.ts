@@ -1,4 +1,4 @@
-export interface Repo {
+export type Repo = {
     completed?: boolean
     text?: string,
     archive_url?: string,
@@ -62,7 +62,7 @@ export interface Repo {
     score?: number,
     size?: number,
     ssh_url?: string,
-    stargazers_count?: number,
+    stargazers_count: number,
     stargazers_url?: string,
     statuses_url?: string,
     subscribers_url?: string,
@@ -77,7 +77,7 @@ export interface Repo {
     watchers_count?: number,
 }
 
-export interface Owner {
+export type Owner = {
     avatar_url?: string,
     events_url?: string,
     followers_url?: string,
