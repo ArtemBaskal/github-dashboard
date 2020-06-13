@@ -1,15 +1,14 @@
 import React from 'react';
 import { RootState } from 'app/rootReducer';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import ReposListItem from './ReposListItem';
 
-const ReposList = React.memo((): JSX.Element => {
-  const repos = useSelector((state: RootState) => state.repos);
+const ReposList = (): JSX.Element => {
+  const repos = useSelector((state: RootState) => state.repos, shallowEqual);
   const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
   return (
     <>
-      {isSearching && <h6>Поиск...</h6>}
       {!isSearching && repos.length === 0 && <h6>Ничего не найдено</h6>}
       {repos.length > 0 && (
         <ul>
@@ -29,6 +28,6 @@ const ReposList = React.memo((): JSX.Element => {
       )}
     </>
   );
-});
+};
 
 export default ReposList;

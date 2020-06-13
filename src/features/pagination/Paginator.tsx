@@ -38,11 +38,11 @@ const Paginator = () => {
   });
 
   return (
-    <>
+    <div>
       <button type="button" disabled={isFirstPage || isSearching} onClick={decreaseCurrentPage}>Предыдущая</button>
       {paginator}
       <button type="button" disabled={isLastPage || isSearching} onClick={increaseCurrentPage}>Следующая</button>
-    </>
+    </div>
   );
 };
 

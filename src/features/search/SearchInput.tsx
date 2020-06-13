@@ -12,6 +12,7 @@ const SearchInput = () => {
 
   const search = useSelector((state: RootState) => state.search.searchTerm);
   const page = useSelector((state: RootState) => state.pages.currentPage);
+  const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
   const debouncedSearchTerm = useDebounce(search, INPUT_DEBOUNCE_DELAY);
   const searchTerm = search ? `name=${debouncedSearchTerm}` : DEFAULT_SEARCH_TERM;
@@ -33,12 +34,16 @@ const SearchInput = () => {
   };
 
   return (
-    <input
-      type="text"
-      value={search}
-      placeholder="Поиск репозитория"
-      onChange={onChange}
-    />
+    <>
+      <input
+        type="text"
+        value={search}
+        placeholder="Поиск репозитория"
+        onChange={onChange}
+      />
+      {'   '}
+      {isSearching && <span>Поиск...</span>}
+    </>
   );
 };
 

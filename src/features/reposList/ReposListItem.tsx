@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Repo } from './types';
 import { formatDate } from '../../utils/helpers';
 
 const ReposListItem = ({
-  name, stargazers_count, updated_at, html_url,
+  id, name, stargazers_count, updated_at, html_url,
 }: Repo) => (
   <>
     <li>
-      <div>{name}</div>
+      <Link to={id.toString()}>{name}</Link>
       <div>
         {stargazers_count}
         {' '}

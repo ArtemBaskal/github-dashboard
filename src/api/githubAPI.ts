@@ -12,7 +12,8 @@ try {
   console.error('Read the  README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
 }
 
-const BASE_URL = 'https://api.github.com/search/repositories';
+const SEARCH_URL = 'https://api.github.com/search/repositories';
+const REPO_URL = 'https://api.github.com/repositories';
 
 export interface GetReposResponse {
     incomplete_results: boolean,
@@ -21,16 +22,16 @@ export interface GetReposResponse {
 }
 
 interface IConfig {
-  params: {
-    q: string,
-    page?: number,
-    sort?: 'stars' | 'forks' | 'help-wanted-issues' | 'updated',
-    order?: 'desc' | 'asc',
-    per_page?: number,
-  },
-  headers: {
-    Authorization?: string,
-  },
+    params: {
+        q: string,
+        page?: number,
+        sort?: 'stars' | 'forks' | 'help-wanted-issues' | 'updated',
+        order?: 'desc' | 'asc',
+        per_page?: number,
+    },
+    headers: {
+        Authorization?: string,
+    },
 }
 
 export const fetchRepos = async (q: string, page: number): Promise<GetReposResponse> => {
@@ -43,15 +44,25 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
         order: 'desc',
         per_page: REPOS_PER_PAGE,
       },
-      headers: {
-      },
+      headers: {},
     };
 
     if (GITHUB_OAUTH_TOKEN) {
       config.headers.Authorization = `token ${GITHUB_OAUTH_TOKEN}`;
     }
 
-    const response = await axios.get<GetReposResponse>(BASE_URL, config);
+    const response = await axios.get<GetReposResponse>(SEARCH_URL, config);
+
+    return response.data;
+  } catch (e) {
+    console.error(e);
+    return e.message;
+  }
+};
+
+export const fetchRepoDetails = async (id: string): Promise<Repo> => {
+  try {
+    const response = await axios.get<Repo>(`${REPO_URL}/${id}`);
 
     return response.data;
   } catch (e) {

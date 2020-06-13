@@ -14,3 +14,9 @@ export const DEFAULT_DATE_FORMAT_OPTIONS = {
   minute: 'numeric',
   hour12: false,
 };
+
+export const ROUTES = {
+  MAIN: '/',
+  REPO_CARD: '/:id',
+  NOT_FOUND: '*',
+};
