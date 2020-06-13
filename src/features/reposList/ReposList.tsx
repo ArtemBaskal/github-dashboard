@@ -9,7 +9,7 @@ const ReposList = React.memo((): JSX.Element => {
 
   return (
     <>
-      {isSearching && <h6>Searching...</h6>}
+      {isSearching && <h6>Поиск...</h6>}
       {!isSearching && repos.length === 0 && <h6>Ничего не найдено</h6>}
       {repos.length > 0 && (
         <ul>

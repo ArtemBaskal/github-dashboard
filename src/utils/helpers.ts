@@ -22,3 +22,14 @@ export const getPageNumbers = (page: number, totalPages: number) => {
 export const formatDate = (
   dateTime: string, options = DEFAULT_DATE_FORMAT_OPTIONS,
 ) => new Date(dateTime).toLocaleString(navigator.language, options);
+
+export const saveInSessionStorage = (name: string, content: string) => {
+  try {
+    sessionStorage[name] = content;
+  } catch (e) {
+    console.error(e);
+    console.error('The limit of sessionStorage is exceeded and it will be cleared.');
+    localStorage.clear();
+    sessionStorage[name] = content;
+  }
+};

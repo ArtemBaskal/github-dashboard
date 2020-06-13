@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { saveInSessionStorage } from '../../utils/helpers';
 
 type IRepos = { isSearching: boolean, searchTerm: string };
 
-const initialState: IRepos = { isSearching: false, searchTerm: localStorage.searchTerm || '' };
+const initialState: IRepos = { isSearching: false, searchTerm: sessionStorage.searchTerm || '' };
 
 const searchSlice = createSlice({
   name: 'search',
@@ -17,13 +18,7 @@ const searchSlice = createSlice({
     setSearchTerm: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
 
-      try {
-        localStorage.searchTerm = action.payload;
-      } catch (e) {
-        console.error(e);
-        console.error('Ошибка! В localStorage превышен лимит, оно будет очищено.');
-        localStorage.clear();
-      }
+      saveInSessionStorage('searchTerm', state.searchTerm);
 
       return state;
     },

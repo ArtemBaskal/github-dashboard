@@ -42,3 +42,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+<br/>
+
+## Access token
+ 
+In order to increase Github API [rate limit](https://developer.github.com/v3/#rate-limiting) you should use the personal access token.
+
+
+[Create personal Github API access token](https://github.com/settings/tokens) and paste it in the `GITHUB_OAUTH_TOKEN` field of `secret_example.json` file and then rename file to `secret.json`.
