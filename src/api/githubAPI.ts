@@ -5,7 +5,7 @@ import { REPOS_PER_PAGE } from '../utils/consts';
 let GITHUB_OAUTH_TOKEN: string;
 try {
   // eslint-disable-next-line global-require
-  const secretConfig = require('../../secret.json');
+  const secretConfig = require('../secret.json');
   GITHUB_OAUTH_TOKEN = secretConfig.GITHUB_OAUTH_TOKEN;
 } catch (e) {
   console.error(e);
