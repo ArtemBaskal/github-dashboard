@@ -54,7 +54,7 @@ export type Repo = {
     notifications_url?: string,
     open_issues?: number,
     open_issues_count?: number,
-    owner?: Owner,
+    owner: Owner,
     private?: boolean,
     pulls_url?: string,
     pushed_at?: string,
@@ -75,6 +75,7 @@ export type Repo = {
     url?: string,
     watchers?: number,
     watchers_count?: number,
+    contributors: Contributor[] | undefined
 }
 
 export type Owner = {
@@ -84,7 +85,7 @@ export type Owner = {
     following_url?: string,
     gists_url?: string,
     gravatar_id?: string,
-    html_url?: string,
+    html_url: string,
     id: number,
     login?: string,
     node_id?: string,
@@ -97,3 +98,5 @@ export type Owner = {
     type?: string,
     url?: string,
 }
+
+export type Contributor = Owner & { contributions: number }

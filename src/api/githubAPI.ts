@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Repo } from 'features/reposList/types';
+import { Repo, Contributor } from 'features/reposList/types';
 import { REPOS_PER_PAGE } from '../utils/consts';
 
 let GITHUB_OAUTH_TOKEN: string;
@@ -62,7 +62,42 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
 
 export const fetchRepoDetails = async (id: string): Promise<Repo> => {
   try {
-    const response = await axios.get<Repo>(`${REPO_URL}/${id}`);
+    const config: Pick<IConfig, 'headers'> = {
+      headers: {},
+    };
+
+    if (GITHUB_OAUTH_TOKEN) {
+      config.headers.Authorization = `token ${GITHUB_OAUTH_TOKEN}`;
+    }
+
+    const response = await axios.get<Repo>(`${REPO_URL}/${id}`, config);
+
+    return response.data;
+  } catch (e) {
+    console.error(e);
+    return e.message;
+  }
+};
+
+// TODO: handle empty repository without contributors?
+/**
+ * https://developer.github.com/v3/repos/#list-repository-contributors
+ *
+ * Lists contributors to the specified repository and
+ * sorts them by the number of commits per contributor in descending order.
+ */
+export const fetchContributors = async (url: string): Promise<Contributor[]> => {
+  try {
+    // TODO: add header for every config
+    const config: Pick<IConfig, 'headers'> = {
+      headers: {},
+    };
+
+    if (GITHUB_OAUTH_TOKEN) {
+      config.headers.Authorization = `token ${GITHUB_OAUTH_TOKEN}`;
+    }
+
+    const response = await axios.get<Contributor[]>(url, config);
 
     return response.data;
   } catch (e) {
