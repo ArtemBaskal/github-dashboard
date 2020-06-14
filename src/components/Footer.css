@@ -4,3 +4,9 @@
     border-top: 1px solid var(--gray-e5);
     position: relative;
 }
+
+.footer__year {
+    position: absolute;
+    left: 3rem;
+    top: 2.1rem
+}

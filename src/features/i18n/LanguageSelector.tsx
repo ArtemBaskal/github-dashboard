@@ -20,19 +20,18 @@ const LanguageSelector = () => {
 
   return (
     <div className="language-selector">
-      <span>
-        {t('language')}
-        :
-        {' '}
-      </span>
+      {t('language')}
       <select
         value={currentLanguage}
         onChange={changeLanguage}
+        className="select select--language"
       >
         {Object.entries(LANGUAGES)
-          .map(([languageCode, languageName]) => (
-            <option key={languageName} value={languageCode}>
-              {languageName}
+          .map(([languageCode, { name, emojiFlag }]) => (
+            <option key={name} value={languageCode}>
+              {emojiFlag}
+              &nbsp;
+              {name}
             </option>
           ))}
       </select>

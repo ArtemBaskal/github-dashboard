@@ -15,6 +15,7 @@
 
 .paginator__button:disabled {
     color: var(--lightgray);
+    cursor: default;
 }
 
 .paginator__button--pressed {

@@ -3,11 +3,12 @@
 }
 
 .repo-info__name--link  {
-    color: var(--link-blue);
+    color: var(--black-base);
 }
 
 .repo-info__name--title  {
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .repo-info__name--link:hover  {

@@ -8,6 +8,7 @@ import { loadRepoDetails, resetRepoDetails } from './repoDetailsSlice';
 import { RootState } from '../../app/rootReducer';
 import { Contributor } from '../reposList/types';
 import RepoInfo from '../../components/RepoInfo';
+import './RepoDetails.css';
 
 type IProps = { id: string }
 
@@ -32,13 +33,18 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
   const renderProfile = ({
     avatar_url, html_url, login, contributions,
   }: Partial<Contributor>) => (
-    <>
-      <div><a href={html_url}>{login}</a></div>
-      <img src={avatar_url} alt="avatar" loading="lazy" />
-      {contributions && <p>{contributions}</p>}
-    </>
+    <div className="profile__container">
+      <a href={html_url}>
+        <img src={avatar_url} alt={login} loading="lazy" className="profile__avatar" />
+        <h3 className="profile__login">
+          {login}
+        </h3>
+        {contributions && <small className="profile__contributions">{`${t('contribution')}: ${contributions}`}</small>}
+      </a>
+    </div>
   );
 
+  // TODO: add html link for actual repository while on detailed page
   return (
     <>
       {Object.keys(repoDetails).length === 0
@@ -62,7 +68,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
             {contributors && contributors.length > 1 && (
             <>
               <h4>{t('top_contributors')}</h4>
-              <ul>
+              <ul className="contributors__container">
                 {contributors.slice(0, TOP_CONTRIBUTORS_QUANTITY).map((
                   contributor,
                 ) => <li key={contributor.login}>{renderProfile(contributor)}</li>)}

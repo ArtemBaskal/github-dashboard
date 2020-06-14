@@ -26,6 +26,6 @@ export const ROUTES = {
 export const BASE_LOCALE = 'ru';
 
 export const LANGUAGES = {
-  en: 'English',
-  ru: 'Русский',
+  en: { name: 'English', emojiFlag: '🇬🇧' },
+  ru: { name: 'Русский', emojiFlag: '🇷🇺' },
 };

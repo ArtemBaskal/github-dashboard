@@ -16,7 +16,7 @@ const RepoInfo = ({
   return (
     <>
       <div className="repo-info">
-        <div className="repo-info__name repo-info__name--title repo-info__name--link">
+        <div className="repo-info__name--title">
           {id ? (
             <Link
               to={id.toString()}
@@ -30,23 +30,23 @@ const RepoInfo = ({
                 && stargazers_count >= 0 && (
                 <div>
                   &#9734;
-                  {' '}
+                  &nbsp;
                   {stargazers_count}
                 </div>
         )}
         {updated_at && (
         <div>
           &#9998;
-          {' '}
+          &nbsp;
           {`${t('last_update')}:`}
-          {' '}
+          &nbsp;
           {`${formatDate(updated_at, currentLocale)}`}
         </div>
         )}
         {html_url && (
         <div>
           &#8962;
-          {' '}
+          &nbsp;
           <a href={html_url} className="repo-info__name repo-info__name--link">{html_url}</a>
         </div>
         )}

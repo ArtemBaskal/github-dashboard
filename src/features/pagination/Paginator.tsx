@@ -28,7 +28,7 @@ const Paginator = () => {
     const isCurrentPage = idx === page;
     const pageClass = classNames('paginator__button', { 'paginator__button--pressed': isCurrentPage });
 
-    // TODO: hashrouting on button press?
+    // TODO: add hashrouting on button press?
     return (
       <button
         key={idx}
@@ -43,25 +43,27 @@ const Paginator = () => {
   });
 
   return (
-    <div className="paginator__container">
-      <button
-        className="paginator__button"
-        type="button"
-        disabled={isFirstPage || noPages || isSearching}
-        onClick={decreaseCurrentPage}
-      >
-        {t('previous')}
-      </button>
-      {paginator}
-      <button
-        className="paginator__button"
-        type="button"
-        disabled={isLastPage || noPages || isSearching}
-        onClick={increaseCurrentPage}
-      >
-        {t('next')}
-      </button>
-    </div>
+        totalPages as number > 0 ? (
+          <div className="paginator__container">
+            <button
+              className="paginator__button"
+              type="button"
+              disabled={isFirstPage || noPages || isSearching}
+              onClick={decreaseCurrentPage}
+            >
+              {t('previous')}
+            </button>
+            {paginator}
+            <button
+              className="paginator__button"
+              type="button"
+              disabled={isLastPage || noPages || isSearching}
+              onClick={increaseCurrentPage}
+            >
+              {t('next')}
+            </button>
+          </div>
+        ) : <></>
   );
 };
 

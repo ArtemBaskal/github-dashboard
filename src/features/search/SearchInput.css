@@ -1,10 +1,14 @@
 .paginator__container{
     padding: 1rem 0;
+    display: flex;
+    justify-content: center;
 }
 
 .search-input__container {
     padding: 2rem 1rem;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .search-input {

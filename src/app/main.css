@@ -1,18 +1,25 @@
 :root {
-    --font-primary: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Arial, sans-serif;
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --gray-e5: #e5e5e5;
-    --purple-base: mediumslateblue;
+    --purple-base: #654FF0;
     --white-base: #fff;
     --lightblue: #f3fcff;
     --lightgray: lightgray;
     --darkblue: darkblue;
     --link-blue: rgb(0, 0, 238);
+    --black-base: black;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    text-decoration: none;
+}
+
+* ::selection {
+    background-color: var(--purple-base);
+    color: white;
 }
 
 html {
@@ -22,7 +29,11 @@ html {
 
 body {
     font-family: var(--font-primary);
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 400;
     text-overflow: ellipsis;
+}
+
+a:hover {
+    color: var(--purple-base);
 }

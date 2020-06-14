@@ -5,10 +5,12 @@
 
 .repo-list--item {
     padding: 1rem;
+    border-top: 1px solid var(--gray-e5);
 }
 
-.repo-list--item:not(:first-child) {
-    border-top: 1px solid var(--gray-e5);
+.repo-list--item:first-child {
+    padding: 0 1rem;
+    border-top: none;
 }
 
 .repos-list__info--empty {
