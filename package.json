@@ -64,7 +64,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "yarn lint"
+            "pre-commit": "yarn lint",
+            "pre-push": "CI=true react-scripts test"
         }
     }
 }

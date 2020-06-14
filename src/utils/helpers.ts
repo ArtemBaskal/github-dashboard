@@ -1,13 +1,14 @@
 import { REPOS_PER_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from './consts';
 
-// TODO: simplify
-export const getPageNumbers = (page: number, totalPages: number) => {
-  const shift = Math.floor(REPOS_PER_PAGE / 2);
+export const getPageNumbers = (
+  page: number, totalPages: number, reposPerPage: number = REPOS_PER_PAGE,
+) => {
+  const shift = Math.floor(reposPerPage / 2);
   const maybeLeftmost = page > shift ? page - shift : 0;
-  const maybeRightmost = maybeLeftmost + REPOS_PER_PAGE;
+  const maybeRightmost = maybeLeftmost + reposPerPage;
 
   const rightmost = maybeRightmost < totalPages ? maybeRightmost : totalPages;
-  const rightmostShifted = rightmost > REPOS_PER_PAGE ? rightmost - REPOS_PER_PAGE : rightmost;
+  const rightmostShifted = rightmost > reposPerPage ? rightmost - REPOS_PER_PAGE : rightmost;
 
   const leftmost = maybeLeftmost < rightmostShifted ? maybeLeftmost : rightmostShifted;
 
@@ -20,16 +21,18 @@ export const getPageNumbers = (page: number, totalPages: number) => {
 };
 
 export const formatDate = (
-  dateTime: string, options = DEFAULT_DATE_FORMAT_OPTIONS,
-) => new Date(dateTime).toLocaleString(navigator.language, options);
+  dateTime: string, language: string = navigator.language, options = DEFAULT_DATE_FORMAT_OPTIONS,
+) => new Date(dateTime).toLocaleString(language, options);
 
-export const saveInSessionStorage = (name: string, content: string) => {
+export const saveInSessionStorage = (key: string, value: string): string => {
   try {
-    sessionStorage[name] = content;
+    sessionStorage[key] = value;
+    return value;
   } catch (e) {
     console.error(e);
     console.error('The limit of sessionStorage is exceeded and it will be cleared.');
     localStorage.clear();
-    sessionStorage[name] = content;
+    sessionStorage[key] = value;
+    return value;
   }
 };
