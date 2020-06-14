@@ -1,4 +1,12 @@
 {
     "repo_search": "Repository search",
-    "language": "Language"
+    "language": "Language",
+    "go_to_main_page": "To main page",
+    "page_is_not_found": "Page is not found",
+    "last_commit_date": "Last commit date",
+    "previous": "Previous",
+    "next": "Next",
+    "search": "Searching...",
+    "owner": "Owner",
+    "top_contributors": "Top contributors"
 }

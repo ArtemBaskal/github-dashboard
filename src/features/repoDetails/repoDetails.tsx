@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { Link } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { TOP_CONTRIBUTORS_QUANTITY, ROUTES } from '../../utils/consts';
 import { loadRepoDetails, resetRepoDetails } from './repoDetailsSlice';
 import { RootState } from '../../app/rootReducer';
@@ -15,6 +16,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
   const id = pathname.replace(/^\//, '');
 
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const repoDetails = useSelector((state: RootState) => state.repoDetails, shallowEqual);
   const {
@@ -51,7 +53,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
             />
             {owner && (
             <>
-              Владелец:
+              {t('owner')}
               {renderProfile(owner)}
             </>
             )}
@@ -59,7 +61,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
             <div>{description}</div>
             {contributors && contributors.length > 1 && (
             <>
-              <h4>Контрибьютеры:</h4>
+              <h4>{t('top_contributors')}</h4>
               <ul>
                 {contributors.slice(0, TOP_CONTRIBUTORS_QUANTITY).map((
                   contributor,

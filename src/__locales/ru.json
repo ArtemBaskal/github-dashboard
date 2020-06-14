@@ -1,4 +1,12 @@
 {
     "repo_search": "Поиск репозитория",
-    "language": "Язык"
+    "language": "Язык",
+    "go_to_main_page": "На главную страницу",
+    "page_is_not_found": "Страница не найдена",
+    "last_commit_date": "Дата последнего коммита",
+    "previous": "Предыдущая",
+    "next": "Следующая",
+    "search": "Поиск...",
+    "owner": "Владелец",
+    "top_contributors": "Топ активных контрибьютеров"
 }

@@ -46,7 +46,7 @@ const SearchInput = () => {
         onChange={onChange}
       />
       {'   '}
-      {isSearching && <span>Поиск...</span>}
+      {isSearching && <span>{t('search')}</span>}
     </>
   );
 };
