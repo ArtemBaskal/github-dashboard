@@ -7,6 +7,7 @@ import { FIRST_PAGE, INPUT_DEBOUNCE_DELAY, DEFAULT_SEARCH_TERM } from '../../uti
 import { RootState } from '../../app/rootReducer';
 import { setCurrentPage } from '../pagination/pageSlice';
 import { setSearchTerm, setIsSearching } from './searchSlice';
+import './SearchInput.css';
 
 const SearchInput = () => {
   const dispatch = useDispatch();
@@ -38,16 +39,16 @@ const SearchInput = () => {
   };
 
   return (
-    <>
+    <div className="search-input__container">
       <input
         type="text"
         value={search}
         placeholder={t('repo_search')}
         onChange={onChange}
+        className="search-input"
       />
-      {'   '}
-      {isSearching && <span>{t('search')}</span>}
-    </>
+      {isSearching && <div className="search-input__status">{t('search')}</div>}
+    </div>
   );
 };
 

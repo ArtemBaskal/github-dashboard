@@ -6,8 +6,8 @@ import { saveInSessionStorage } from '../../utils/helpers';
 type IRepos = { totalPages?: number, currentPage?: number };
 
 const initialState: IRepos = {
-  totalPages: 1,
-  currentPage: parseInt(sessionStorage.currentPage, 10) || 1,
+  totalPages: 0,
+  currentPage: parseInt(sessionStorage.currentPage, 10) || 0,
 };
 
 const pageSlice = createSlice({

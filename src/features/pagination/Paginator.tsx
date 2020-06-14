@@ -6,6 +6,7 @@ import { FIRST_PAGE } from '../../utils/consts';
 import { RootState } from '../../app/rootReducer';
 import { getPageNumbers } from '../../utils/helpers';
 import { setCurrentPage } from './pageSlice';
+import './Paginator.css';
 
 const Paginator = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Paginator = () => {
 
   const isFirstPage = page === FIRST_PAGE;
   const isLastPage = page === totalPages;
+  const noPages = totalPages === 0;
 
   const increaseCurrentPage = () => dispatch(setCurrentPage(page as number + 1));
   const decreaseCurrentPage = () => dispatch(setCurrentPage(page as number - 1));
@@ -24,14 +26,15 @@ const Paginator = () => {
   const paginator = getPageNumbers(page as number, totalPages as number).map((idx) => {
     const handleClick = () => dispatch(setCurrentPage(idx));
     const isCurrentPage = idx === page;
-    const pageClassName = classNames({ 'paginator--current-page': isCurrentPage });
+    const pageClass = classNames('paginator__button', { 'paginator__button--pressed': isCurrentPage });
 
+    // TODO: hashrouting on button press?
     return (
       <button
         key={idx}
         type="button"
         onClick={handleClick}
-        className={pageClassName}
+        className={pageClass}
         disabled={isSearching || isCurrentPage}
       >
         {idx}
@@ -40,10 +43,24 @@ const Paginator = () => {
   });
 
   return (
-    <div>
-      <button type="button" disabled={isFirstPage || isSearching} onClick={decreaseCurrentPage}>{t('previous')}</button>
+    <div className="paginator__container">
+      <button
+        className="paginator__button"
+        type="button"
+        disabled={isFirstPage || noPages || isSearching}
+        onClick={decreaseCurrentPage}
+      >
+        {t('previous')}
+      </button>
       {paginator}
-      <button type="button" disabled={isLastPage || isSearching} onClick={increaseCurrentPage}>{t('next')}</button>
+      <button
+        className="paginator__button"
+        type="button"
+        disabled={isLastPage || noPages || isSearching}
+        onClick={increaseCurrentPage}
+      >
+        {t('next')}
+      </button>
     </div>
   );
 };

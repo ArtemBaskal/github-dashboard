@@ -1,6 +1,7 @@
 import React from 'react';
-import LanguageSelector from './LanguageSelector';
+import LanguageSelector from '../features/i18n/LanguageSelector';
+import './Footer.css';
 
-const Footer = () => <div><LanguageSelector /></div>;
+const Footer = () => <div className="footer"><LanguageSelector /></div>;
 
 export default Footer;

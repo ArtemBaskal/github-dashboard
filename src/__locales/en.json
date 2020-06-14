@@ -3,10 +3,11 @@
     "language": "Language",
     "go_to_main_page": "To main page",
     "page_is_not_found": "Page is not found",
-    "last_commit_date": "Last commit date",
+    "last_update": "Last update",
     "previous": "Previous",
     "next": "Next",
     "search": "Searching...",
     "owner": "Owner",
-    "top_contributors": "Top contributors"
+    "top_contributors": "Top contributors",
+    "nothing_is_found": "Nothing is found"
 }

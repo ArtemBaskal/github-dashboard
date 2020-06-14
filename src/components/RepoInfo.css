@@ -1,0 +1,15 @@
+.repo-info__name {
+    text-decoration: none;
+}
+
+.repo-info__name--link  {
+    color: var(--link-blue);
+}
+
+.repo-info__name--title  {
+    margin-bottom: 1rem;
+}
+
+.repo-info__name--link:hover  {
+    text-decoration: underline;
+}

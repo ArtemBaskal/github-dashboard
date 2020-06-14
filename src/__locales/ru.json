@@ -3,10 +3,11 @@
     "language": "Язык",
     "go_to_main_page": "На главную страницу",
     "page_is_not_found": "Страница не найдена",
-    "last_commit_date": "Дата последнего коммита",
+    "last_update": "Последнее изменение",
     "previous": "Предыдущая",
     "next": "Следующая",
     "search": "Поиск...",
     "owner": "Владелец",
-    "top_contributors": "Топ активных контрибьютеров"
+    "top_contributors": "Топ активных контрибьютеров",
+    "nothing_is_found": "Ничего не найдено"
 }

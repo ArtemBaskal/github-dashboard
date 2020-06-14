@@ -1,0 +1,26 @@
+.paginator__container{
+    padding: 1rem 0;
+}
+
+.search-input__container {
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+.search-input {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 0 0 3rem;
+    border: solid 1px var(--gray-e5);
+    height: 4rem;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: var(--white-base);
+}
+
+.search-input__status {
+    position: absolute;
+    bottom: 0;
+    left: 4rem;
+    font-size: 1.3rem;
+}

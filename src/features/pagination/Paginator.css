@@ -1,0 +1,24 @@
+.paginator__button {
+    line-height: 1.5;
+    text-align: center;
+    padding: 0.7rem 1.2rem;
+    color: var(--purple-base);
+    cursor: pointer;
+    user-select: none;
+    background: var(--white-base);
+    border: 1px solid var(--gray-e5);
+}
+
+.paginator__button:not(:disabled):hover {
+    background-color: var(--lightblue);
+}
+
+.paginator__button:disabled {
+    color: var(--lightgray);
+}
+
+.paginator__button--pressed {
+    color: var(--white-base) !important;
+    border: 1px solid var(--purple-base);
+    background-color: var(--purple-base);
+}
