@@ -2,7 +2,7 @@ export const INPUT_DEBOUNCE_DELAY = 500;
 
 export const REPOS_PER_PAGE = 10;
 
-export const CONTRIBUTORS_IN_DETAILS = 10;
+export const TOP_CONTRIBUTORS_QUANTITY = 10;
 
 export const FIRST_PAGE = 1;
 
@@ -21,4 +21,11 @@ export const ROUTES = {
   MAIN: '/',
   REPO_CARD: '/:id',
   NOT_FOUND: '*',
+};
+
+export const BASE_LOCALE = 'ru';
+
+export const LANGUAGES = {
+  en: 'English',
+  ru: 'Русский',
 };

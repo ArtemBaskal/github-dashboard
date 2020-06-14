@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { Link } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { CONTRIBUTORS_IN_DETAILS, ROUTES } from '../../utils/consts';
+import { TOP_CONTRIBUTORS_QUANTITY, ROUTES } from '../../utils/consts';
 import { loadRepoDetails, resetRepoDetails } from './repoDetailsSlice';
 import { RootState } from '../../app/rootReducer';
 import { Contributor } from '../reposList/types';
@@ -61,7 +61,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
             <>
               <h4>Контрибьютеры:</h4>
               <ul>
-                {contributors.slice(0, CONTRIBUTORS_IN_DETAILS).map((
+                {contributors.slice(0, TOP_CONTRIBUTORS_QUANTITY).map((
                   contributor,
                 ) => <li key={contributor.login}>{renderProfile(contributor)}</li>)}
               </ul>

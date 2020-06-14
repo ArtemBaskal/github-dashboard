@@ -7,19 +7,23 @@ import Paginator from '../features/pagination/Paginator';
 import RepoDetails from '../features/repoDetails/repoDetails';
 import NotFoundPage from '../components/NotFoundPage';
 import { ROUTES } from '../utils/consts';
+import Footer from '../components/Footer';
 
 const App = () => (
-  <Router>
-    <Switch>
-      <Route path={ROUTES.MAIN} exact>
-        <SearchInput />
-        <ReposList />
-        <Paginator />
-      </Route>
-      <Route path={ROUTES.REPO_CARD} exact component={RepoDetails} />
-      <Route path={ROUTES.NOT_FOUND} component={NotFoundPage} />
-    </Switch>
-  </Router>
+  <>
+    <Router>
+      <Switch>
+        <Route path={ROUTES.MAIN} exact>
+          <SearchInput />
+          <ReposList />
+          <Paginator />
+        </Route>
+        <Route path={ROUTES.REPO_CARD} exact component={RepoDetails} />
+        <Route path={ROUTES.NOT_FOUND} component={NotFoundPage} />
+      </Switch>
+    </Router>
+    <Footer />
+  </>
 );
 
 export default App;

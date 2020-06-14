@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { loadRepos } from '../reposList/reposSlice';
 import useDebounce from '../../utils/hooks/useDebounce';
 import { FIRST_PAGE, INPUT_DEBOUNCE_DELAY, DEFAULT_SEARCH_TERM } from '../../utils/consts';
@@ -9,6 +10,7 @@ import { setSearchTerm, setIsSearching } from './searchSlice';
 
 const SearchInput = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const search = useSelector((state: RootState) => state.search.searchTerm);
   const page = useSelector((state: RootState) => state.pages.currentPage);
@@ -26,6 +28,8 @@ const SearchInput = () => {
       dispatch(setIsSearching(false));
     })();
   },
+  // eslint-disable-next-line
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   [dispatch, setIsSearching, debouncedSearchTerm, page]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +42,7 @@ const SearchInput = () => {
       <input
         type="text"
         value={search}
-        placeholder="Поиск репозитория"
+        placeholder={t('repo_search')}
         onChange={onChange}
       />
       {'   '}
