@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### `npm start`	
+- Runs the app in the development mode.<br />
+- [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+Runs the app in the development mode.<br />	The project supports both English and Russian localizations.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ## Project description
 
 #### Find Github repos easily and see detailed repo info. Find Github repos easily and see detailed repo info.
