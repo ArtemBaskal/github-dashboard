@@ -11,7 +11,6 @@ import { ROUTES } from '../utils/consts';
 import Footer from '../components/Footer';
 
 // TODO: add aria attributes for accessibility
-// TODO: check if should add css media attributes for adaptive styles
 const App = () => (
   <>
     <div className="container">

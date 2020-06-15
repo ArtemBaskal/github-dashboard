@@ -10,5 +10,8 @@
     "owner": "Владелец",
     "top_contributors": "Топ активных контрибьютеров",
     "nothing_is_found": "Ничего не найдено",
-    "contribution": "Личный вклад"
+    "contributions": "Личный вклад",
+    "loading": "Загрузка...",
+    "to_main_page": "На главную страницу",
+    "repos_found_repos_found_approximately": "Найдено репозиториев: примерно"
 }

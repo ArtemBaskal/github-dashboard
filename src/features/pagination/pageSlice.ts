@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { REPOS_PER_PAGE } from '../../utils/consts';
 import { saveInSessionStorage } from '../../utils/helpers';
 
-type IRepos = { totalPages?: number, currentPage?: number };
+type IRepos = { totalPages: number, currentPage: number };
 
 const initialState: IRepos = {
   totalPages: 0,

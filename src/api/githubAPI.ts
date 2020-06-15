@@ -79,7 +79,6 @@ export const fetchRepoDetails = async (id: string): Promise<Repo> => {
   }
 };
 
-// TODO: handle empty repository without contributors?
 /**
  * https://developer.github.com/v3/repos/#list-repository-contributors
  *

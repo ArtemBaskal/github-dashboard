@@ -4,7 +4,11 @@ import './Footer.css';
 
 const Footer = () => (
   <footer className="footer">
-    <span className="footer__year">{`Copyright © ${new Date().getFullYear()}`}</span>
+    <span className="footer__year">
+      <span className="icon--purple">©</span>
+      &nbsp;
+      {new Date().getFullYear()}
+    </span>
     <LanguageSelector />
   </footer>
 );

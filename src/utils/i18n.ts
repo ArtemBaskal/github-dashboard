@@ -14,7 +14,6 @@ const resources = {
   },
 };
 
-// TODO: check whether it works for non-existent translations
 i18n
   .use(languageDetector)
   .use(initReactI18next)

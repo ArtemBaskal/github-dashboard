@@ -2,15 +2,23 @@
     text-decoration: none;
 }
 
-.repo-info__name--link  {
+.repo-info__name--link {
     color: var(--black-base);
 }
 
-.repo-info__name--title  {
+.repo-info__name--title {
     margin-bottom: 1rem;
     font-weight: bold;
 }
 
-.repo-info__name--link:hover  {
+.repo-info__name--link:hover {
     text-decoration: underline;
+}
+
+.icon--purple {
+    color: var(--purple-base);
+}
+
+.icon--gray {
+    color: var(--gray-9);
 }

@@ -10,5 +10,8 @@
     "owner": "Owner",
     "top_contributors": "Top contributors",
     "nothing_is_found": "Nothing is found",
-    "contribution": "Contribution"
+    "contributions": "Contributions",
+    "loading": "Loading...",
+    "to_main_page": "To the main page",
+    "repos_found_approximately": "Repos found: approximately"
 }

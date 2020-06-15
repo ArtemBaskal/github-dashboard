@@ -1,6 +1,7 @@
 :root {
     --font-primary: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --gray-e5: #e5e5e5;
+    --gray-9: #999;
     --purple-base: #654FF0;
     --white-base: #fff;
     --lightblue: #f3fcff;
@@ -20,6 +21,10 @@
 * ::selection {
     background-color: var(--purple-base);
     color: white;
+}
+
+a, a:visited {
+    color: initial;
 }
 
 html {

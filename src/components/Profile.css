@@ -1,0 +1,23 @@
+.profile__container {
+    width: 16rem;
+    background-color: var(--white-base);
+    padding: 1rem 0 2.5rem;
+}
+
+.profile__login {
+    max-width: 100%;
+    text-align: center;
+}
+
+.profile__avatar {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.profile__contributions {
+    text-align: center;
+    color: var(--black-base);
+    max-width: 100%;
+}

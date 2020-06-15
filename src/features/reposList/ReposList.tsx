@@ -12,7 +12,7 @@ const ReposList = (): JSX.Element => {
 
   return (
     <div className="repos-list__container">
-      {!isSearching && repos.length === 0 && <div className="repos-list__info--empty">{t('nothing_is_found')}</div>}
+      {!isSearching && repos.length === 0 && <h4 className="repos-list__info--empty">{t('nothing_is_found')}</h4>}
       {repos.length > 0 && (
         <ul className="repo-list">
           {repos.map(({
