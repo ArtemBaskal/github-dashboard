@@ -30,13 +30,17 @@ export const loadRepoDetails = (id: string): AppThunk => async (dispatch: AppDis
 
   if (typeof repoDetails === 'string') {
     throw repoDetails;
+  } else {
+    dispatch(repoDetailSlice.actions.getRepoDetails(repoDetails));
   }
 
-  const { contributors_url } = repoDetails;
-  dispatch(repoDetailSlice.actions.getRepoDetails(repoDetails));
+  const repoContributors = await fetchContributors(repoDetails.contributors_url!);
 
-  const repoContributors = await fetchContributors(contributors_url!);
-  dispatch(repoDetailSlice.actions.getRepoContributors(repoContributors));
+  if (typeof repoContributors === 'string') {
+    throw repoContributors;
+  } else {
+    dispatch(repoDetailSlice.actions.getRepoContributors(repoContributors));
+  }
 };
 
 export default repoDetailSlice.reducer;

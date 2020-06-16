@@ -8,12 +8,13 @@ import { RootState } from 'app/rootReducer';
 import RepoInfo from 'components/RepoInfo';
 import Profile from 'components/Profile';
 import Loading from 'components/Loading';
+import withErrorBoundary from 'utils/HOCs/withErrorBoundary';
 import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
 import 'features/repoDetails/RepoDetails.css';
 
 type IProps = {}
 
-const RepoDetails = React.memo((props: RouteChildrenProps) => {
+const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
   const { location: { pathname } } = props;
   const id = pathname.replace(/^\//, '');
   // Used for catching error in error boundary https://github.com/facebook/react/issues/14981
@@ -81,4 +82,4 @@ const RepoDetails = React.memo((props: RouteChildrenProps) => {
   );
 });
 
-export default RepoDetails;
+export default withErrorBoundary(RepoDetails);

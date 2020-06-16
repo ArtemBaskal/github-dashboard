@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { loadRepos } from 'features/reposList/reposSlice';
@@ -19,6 +19,7 @@ const SearchInput = () => {
   const page = useSelector((state: RootState) => state.pages.currentPage);
   const pages = useSelector((state: RootState) => state.pages.totalPages);
   const repos = useSelector((state: RootState) => state.repos, shallowEqual);
+  const [, setState] = useState();
   const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
   const debouncedSearchTerm = useDebounce(search, INPUT_DEBOUNCE_DELAY);
@@ -28,7 +29,13 @@ const SearchInput = () => {
     (async () => {
       dispatch(setIsSearching(true));
 
-      await dispatch(loadRepos(searchTerm, page as number));
+      try {
+        await dispatch(loadRepos(searchTerm, page));
+      } catch (error) {
+        setState(() => {
+          throw error;
+        });
+      }
 
       dispatch(setIsSearching(false));
     })();

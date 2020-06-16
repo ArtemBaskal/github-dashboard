@@ -34,7 +34,7 @@ interface IConfig {
     },
 }
 
-export const fetchRepos = async (q: string, page: number): Promise<GetReposResponse> => {
+export const fetchRepos = async (q: string, page: number): Promise<GetReposResponse | string> => {
   try {
     const config: IConfig = {
       params: {
@@ -60,7 +60,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
   }
 };
 
-export const fetchRepoDetails = async (id: string): Promise<Repo | 'string'> => {
+export const fetchRepoDetails = async (id: string): Promise<Repo | string> => {
   try {
     const config: Pick<IConfig, 'headers'> = {
       headers: {},
@@ -85,7 +85,7 @@ export const fetchRepoDetails = async (id: string): Promise<Repo | 'string'> => 
  * Lists contributors to the specified repository and
  * sorts them by the number of commits per contributor in descending order.
  */
-export const fetchContributors = async (url: string): Promise<Contributor[]> => {
+export const fetchContributors = async (url: string): Promise<Contributor[] | string> => {
   try {
     // TODO: add header for every config
     const config: Pick<IConfig, 'headers'> = {
