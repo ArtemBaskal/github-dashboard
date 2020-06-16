@@ -1,4 +1,5 @@
 import { REPOS_PER_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from 'utils/consts';
+import log from 'utils/log';
 
 export const getPageNumbers = (
   page: number, totalPages: number, reposPerPage: number = REPOS_PER_PAGE,
@@ -29,8 +30,8 @@ export const saveInSessionStorage = (key: string, value: string): string => {
     sessionStorage[key] = value;
     return value;
   } catch (e) {
-    console.error(e);
-    console.error('The limit of sessionStorage is exceeded and it will be cleared.');
+    log.error(e);
+    log.error('The limit of sessionStorage is exceeded and it will be cleared.');
     localStorage.clear();
     sessionStorage[key] = value;
     return value;

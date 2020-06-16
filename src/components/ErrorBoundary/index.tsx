@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '../../utils/consts';
+import { ROUTES } from 'utils/consts';
+import log from 'utils/log';
 
 type IProps = { children: JSX.Element };
 type IState = {error: null | string};
@@ -17,7 +18,7 @@ class ErrorBoundary extends Component<IProps, IState> {
   }
 
   componentDidCatch(error: string | Error) {
-    console.error(error);
+    log.error(error);
   }
 
   render() {

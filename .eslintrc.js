@@ -26,7 +26,6 @@ module.exports = {
     rules: {
         'import/extensions': 0,
         'camelcase': 0,
-        'no-console': 0,
         'react/jsx-filename-extension': 0,
         "import/prefer-default-export": 0,
         "react/jsx-props-no-spreading": 0,

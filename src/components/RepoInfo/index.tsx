@@ -45,7 +45,7 @@ const RepoInfo = ({
         )}
         {html_url && (
         <div>
-          &#8962;
+          &#128279;
           &nbsp;
           <a href={html_url} className="repo-info__name repo-info__name--link">{html_url}</a>
         </div>

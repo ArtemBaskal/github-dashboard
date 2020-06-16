@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { Repo, Contributor } from 'features/reposList/types';
 import { REPOS_PER_PAGE } from 'utils/consts';
+import log from 'utils/log';
 
 const SEARCH_URL = 'https://api.github.com/search/repositories';
 const REPO_URL = 'https://api.github.com/repositories';
@@ -41,7 +42,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
 
     return response.data;
   } catch (e) {
-    console.error(e);
+    log.error(e);
     return e.message;
   }
 };
@@ -52,7 +53,7 @@ export const fetchRepoDetails = async (id: string): Promise<Repo | string> => {
 
     return response.data;
   } catch (e) {
-    console.error(e);
+    log.error(e);
     return e.message;
   }
 };
@@ -69,7 +70,7 @@ export const fetchContributors = async (url: string): Promise<Contributor[] | st
 
     return response.data;
   } catch (e) {
-    console.error(e);
+    log.error(e);
     return e.message;
   }
 };
@@ -86,8 +87,8 @@ axios.interceptors.request.use((config: Partial<IConfig> = {}) => {
     // eslint-disable-next-line no-param-reassign
     config.headers = { ...config.headers, Authorization: `token ${GITHUB_OAUTH_TOKEN}` };
   } catch (e) {
-    console.error(e);
-    console.error('Read the README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
+    log.error(e);
+    log.error('Read the README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
   } finally {
     // eslint-disable-next-line no-unsafe-finally
     return config;
