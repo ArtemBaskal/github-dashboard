@@ -2,16 +2,6 @@ import axios from 'axios';
 import { Repo, Contributor } from 'features/reposList/types';
 import { REPOS_PER_PAGE } from 'utils/consts';
 
-let GITHUB_OAUTH_TOKEN: string;
-try {
-  // eslint-disable-next-line global-require
-  const secretConfig = require('../secret.json');
-  GITHUB_OAUTH_TOKEN = secretConfig.GITHUB_OAUTH_TOKEN;
-} catch (e) {
-  console.error(e);
-  console.error('Read the  README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
-}
-
 const SEARCH_URL = 'https://api.github.com/search/repositories';
 const REPO_URL = 'https://api.github.com/repositories';
 
@@ -47,10 +37,6 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
       headers: {},
     };
 
-    if (GITHUB_OAUTH_TOKEN) {
-      config.headers.Authorization = `token ${GITHUB_OAUTH_TOKEN}`;
-    }
-
     const response = await axios.get<GetReposResponse>(SEARCH_URL, config);
 
     return response.data;
@@ -62,15 +48,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
 
 export const fetchRepoDetails = async (id: string): Promise<Repo | string> => {
   try {
-    const config: Pick<IConfig, 'headers'> = {
-      headers: {},
-    };
-
-    if (GITHUB_OAUTH_TOKEN) {
-      config.headers.Authorization = `token ${GITHUB_OAUTH_TOKEN}`;
-    }
-
-    const response = await axios.get<Repo>(`${REPO_URL}/${id}`, config);
+    const response = await axios.get<Repo>(`${REPO_URL}/${id}`);
 
     return response.data;
   } catch (e) {
@@ -87,16 +65,7 @@ export const fetchRepoDetails = async (id: string): Promise<Repo | string> => {
  */
 export const fetchContributors = async (url: string): Promise<Contributor[] | string> => {
   try {
-    // TODO: add header for every config
-    const config: Pick<IConfig, 'headers'> = {
-      headers: {},
-    };
-
-    if (GITHUB_OAUTH_TOKEN) {
-      config.headers.Authorization = `token ${GITHUB_OAUTH_TOKEN}`;
-    }
-
-    const response = await axios.get<Contributor[]>(url, config);
+    const response = await axios.get<Contributor[]>(url);
 
     return response.data;
   } catch (e) {
@@ -104,3 +73,23 @@ export const fetchContributors = async (url: string): Promise<Contributor[] | st
     return e.message;
   }
 };
+
+axios.interceptors.request.use((config: Partial<IConfig> = {}) => {
+  try {
+    // eslint-disable-next-line global-require
+    const { GITHUB_OAUTH_TOKEN } = require('secret.json');
+
+    if (!GITHUB_OAUTH_TOKEN) {
+      throw new Error('No Access Token provided. Read the README Access token section for more details: https');
+    }
+
+    // eslint-disable-next-line no-param-reassign
+    config.headers = { ...config.headers, Authorization: `token ${GITHUB_OAUTH_TOKEN}` };
+  } catch (e) {
+    console.error(e);
+    console.error('Read the README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
+  } finally {
+    // eslint-disable-next-line no-unsafe-finally
+    return config;
+  }
+});

@@ -16,6 +16,7 @@ const RepoDetails = lazy(() => import('features/repoDetails/RepoDetails'));
 
 // TODO: add aria attributes for accessibility
 // TODO: add black theme
+// TODO: add logger
 const App = () => (
   <>
     <div className="container">
