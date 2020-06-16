@@ -9,10 +9,6 @@
     padding: 1rem;
 }
 
-.repo-details__loader {
-    text-align: center;
-}
-
 .repo-details__link--main-page {
     margin: 1rem 0;
 }

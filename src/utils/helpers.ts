@@ -1,4 +1,4 @@
-import { REPOS_PER_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from './consts';
+import { REPOS_PER_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from 'utils/consts';
 
 export const getPageNumbers = (
   page: number, totalPages: number, reposPerPage: number = REPOS_PER_PAGE,

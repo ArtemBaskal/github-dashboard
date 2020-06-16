@@ -1,6 +1,6 @@
 import React from 'react';
-import LanguageSelector from '../features/i18n/LanguageSelector';
-import './Footer.css';
+import LanguageSelector from 'features/i18n/LanguageSelector';
+import 'components/Footer/index.css';
 
 const Footer = () => (
   <footer className="footer">

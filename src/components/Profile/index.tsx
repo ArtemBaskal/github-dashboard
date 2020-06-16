@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Contributor } from 'features/reposList/types';
-import './Profile.css';
+import 'components/Profile/index.css';
 
 const Profile = ({
   avatar_url, html_url, login, contributions,

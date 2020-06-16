@@ -2,11 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { FIRST_PAGE } from '../../utils/consts';
-import { RootState } from '../../app/rootReducer';
-import { getPageNumbers } from '../../utils/helpers';
-import { setCurrentPage } from './pageSlice';
-import './Paginator.css';
+import { FIRST_PAGE } from 'utils/consts';
+import { RootState } from 'app/rootReducer';
+import { getPageNumbers } from 'utils/helpers';
+import { setCurrentPage } from 'features/pagination/pageSlice';
+import 'features/pagination/Paginator.css';
 
 const Paginator = () => {
   const dispatch = useDispatch();

@@ -2,8 +2,8 @@ import React from 'react';
 import { RootState } from 'app/rootReducer';
 import { useTranslation } from 'react-i18next';
 import { shallowEqual, useSelector } from 'react-redux';
-import RepoInfo from '../../components/RepoInfo';
-import './RepoList.css';
+import RepoInfo from 'components/RepoInfo';
+import 'features/reposList/RepoList.css';
 
 const ReposList = (): JSX.Element => {
   const repos = useSelector((state: RootState) => state.repos, shallowEqual);

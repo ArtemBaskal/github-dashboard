@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { REPOS_PER_PAGE } from '../../utils/consts';
-import { saveInSessionStorage } from '../../utils/helpers';
+import { REPOS_PER_PAGE } from 'utils/consts';
+import { saveInSessionStorage } from 'utils/helpers';
 
 type IRepos = { totalPages: number, currentPage: number };
 
 const initialState: IRepos = {
-  totalPages: 0,
-  currentPage: parseInt(sessionStorage.currentPage, 10) || 0,
+  totalPages: 1,
+  currentPage: parseInt(sessionStorage.currentPage, 10) || 1,
 };
 
 const pageSlice = createSlice({

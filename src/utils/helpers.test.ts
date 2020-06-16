@@ -1,5 +1,5 @@
 /* global describe it expect  */
-import { getPageNumbers, formatDate, saveInSessionStorage } from './helpers';
+import { getPageNumbers, formatDate, saveInSessionStorage } from 'utils/helpers';
 
 describe('getPageNumbers', () => {
   it('limit the left edge', () => {

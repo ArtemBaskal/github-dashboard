@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from 'app/store';
 import { fetchRepoDetails, fetchContributors } from 'api/githubAPI';
 import { Repo, Contributor } from 'features/reposList/types';
+import { setErrorMessage } from 'features/errorHandler/errorHandlerSlice';
 
 const initialState: Partial<Repo> = {};
 
@@ -28,6 +29,12 @@ export const { resetRepoDetails } = repoDetailSlice.actions;
 
 export const loadRepoDetails = (id: string): AppThunk => async (dispatch: AppDispatch) => {
   const repoDetails = await fetchRepoDetails(id);
+
+  if (typeof repoDetails === 'string') {
+    dispatch(setErrorMessage(repoDetails));
+    return;
+  }
+
   const { contributors_url } = repoDetails;
   const repoContributors = await fetchContributors(contributors_url!);
 

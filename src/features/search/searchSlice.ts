@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { saveInSessionStorage } from '../../utils/helpers';
+import { saveInSessionStorage } from 'utils/helpers';
 
 type IRepos = { isSearching: boolean, searchTerm: string };
 

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { loadRepos } from '../reposList/reposSlice';
-import useDebounce from '../../utils/hooks/useDebounce';
+import { loadRepos } from 'features/reposList/reposSlice';
+import { setCurrentPage } from 'features/pagination/pageSlice';
+import { setSearchTerm, setIsSearching } from 'features/search/searchSlice';
+import useDebounce from 'utils/hooks/useDebounce';
+import { RootState } from 'app/rootReducer';
 import {
   FIRST_PAGE, INPUT_DEBOUNCE_DELAY, DEFAULT_SEARCH_TERM, REPOS_PER_PAGE,
-} from '../../utils/consts';
-import { RootState } from '../../app/rootReducer';
-import { setCurrentPage } from '../pagination/pageSlice';
-import { setSearchTerm, setIsSearching } from './searchSlice';
-import './SearchInput.css';
+} from 'utils/consts';
+import 'features/search/SearchInput.css';
 
 const SearchInput = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const SearchInput = () => {
     })();
   },
   // eslint-disable-next-line
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   [dispatch, setIsSearching, debouncedSearchTerm, page]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,8 +45,12 @@ const SearchInput = () => {
   const reposFound = pages > 1 ? pages * REPOS_PER_PAGE : Object.keys(repos).length;
 
   const renderHint = () => {
-    if (isSearching) { return <div className="search-input__status">{t('search')}</div>; }
-    if (reposFound) { return <div className="search-input__status">{`${t('repos_found_approximately')} ${reposFound}`}</div>; }
+    if (isSearching) {
+      return <div className="search-input__status">{t('search')}</div>;
+    }
+    if (reposFound) {
+      return <div className="search-input__status">{`${t('repos_found_approximately')} ${reposFound}`}</div>;
+    }
     return null;
   };
 

@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Repo } from '../features/reposList/types';
-import { formatDate } from '../utils/helpers';
-import { RootState } from '../app/rootReducer';
-import './RepoInfo.css';
+import { Repo } from 'features/reposList/types';
+import { formatDate } from 'utils/helpers';
+import { RootState } from 'app/rootReducer';
+import 'components/RepoInfo/index.css';
 
 const RepoInfo = ({
   id, name, stargazers_count, updated_at, html_url,

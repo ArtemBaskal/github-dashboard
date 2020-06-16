@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Repo, Contributor } from 'features/reposList/types';
-import { REPOS_PER_PAGE } from '../utils/consts';
+import { REPOS_PER_PAGE } from 'utils/consts';
 
 let GITHUB_OAUTH_TOKEN: string;
 try {
@@ -60,7 +60,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
   }
 };
 
-export const fetchRepoDetails = async (id: string): Promise<Repo> => {
+export const fetchRepoDetails = async (id: string): Promise<Repo | 'string'> => {
   try {
     const config: Pick<IConfig, 'headers'> = {
       headers: {},

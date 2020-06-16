@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { LANGUAGES } from 'utils/consts';
 import i18n from 'utils/i18n';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../app/rootReducer';
-import { setCurrentLocale } from './i18nSlice';
-import './LanguageSelector.css';
+import { RootState } from 'app/rootReducer';
+import { setCurrentLocale } from 'features/i18n/i18nSlice';
+import 'features/i18n/LanguageSelector.css';
 
 const LanguageSelector = () => {
   const { t } = useTranslation();

@@ -1,29 +1,28 @@
-import React from 'react';
-import './main.css';
-import './App.css';
-import ReposList from 'features/reposList/ReposList';
-import SearchInput from 'features/search/SearchInput';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Paginator from '../features/pagination/Paginator';
-import RepoDetails from '../features/repoDetails/RepoDetails';
-import NotFoundPage from '../components/NotFoundPage';
-import { ROUTES } from '../utils/consts';
-import Footer from '../components/Footer';
+import { ROUTES } from 'utils/consts';
+import Footer from 'components/Footer';
+import Loading from 'components/Loading';
+import 'app/main.css';
+import 'app/App.css';
+
+const MainPage = lazy(() => import('components/MainPage'));
+const NotFoundPage = lazy(() => import('components/NotFoundPage'));
+const RepoDetails = lazy(() => import('features/repoDetails/RepoDetails'));
 
 // TODO: add aria attributes for accessibility
+// TODO: add error boundary
 const App = () => (
   <>
     <div className="container">
       <Router>
-        <Switch>
-          <Route path={ROUTES.MAIN} exact>
-            <SearchInput />
-            <ReposList />
-            <Paginator />
-          </Route>
-          <Route path={ROUTES.REPO_CARD} exact component={RepoDetails} />
-          <Route path={ROUTES.NOT_FOUND} component={NotFoundPage} />
-        </Switch>
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            <Route path={ROUTES.MAIN} exact component={MainPage} />
+            <Route path={ROUTES.REPO_CARD} exact component={RepoDetails} />
+            <Route path={ROUTES.NOT_FOUND} component={NotFoundPage} />
+          </Switch>
+        </Suspense>
       </Router>
     </div>
     <Footer />

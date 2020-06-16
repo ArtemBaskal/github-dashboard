@@ -3,12 +3,13 @@ import { RouteChildrenProps } from 'react-router';
 import { Link } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { TOP_CONTRIBUTORS_QUANTITY, ROUTES } from '../../utils/consts';
-import { loadRepoDetails, resetRepoDetails } from './repoDetailsSlice';
-import { RootState } from '../../app/rootReducer';
-import RepoInfo from '../../components/RepoInfo';
-import Profile from '../../components/Profile';
-import './RepoDetails.css';
+import { TOP_CONTRIBUTORS_QUANTITY, ROUTES } from 'utils/consts';
+import { RootState } from 'app/rootReducer';
+import RepoInfo from 'components/RepoInfo';
+import Profile from 'components/Profile';
+import Loading from 'components/Loading';
+import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
+import 'features/repoDetails/RepoDetails.css';
 
 type IProps = { id: string }
 
@@ -33,7 +34,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
   return (
     <div className="repo-details__container">
       {Object.keys(repoDetails).length === 0
-        ? <h4 className="repo-details__loader">{t('loading')}</h4>
+        ? <Loading text={t('loading')} />
         : (
           <>
             <h3 className="repo-details__link--main-page">

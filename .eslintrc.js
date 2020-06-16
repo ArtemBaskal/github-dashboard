@@ -40,5 +40,5 @@ module.exports = {
             }
         }
     },
-    "ignorePatterns": ["*.json", "*.css"],
+    "ignorePatterns": ["*.json", "*.css", "*.pcss"],
 };

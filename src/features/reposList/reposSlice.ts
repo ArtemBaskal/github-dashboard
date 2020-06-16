@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from 'app/store';
 import { fetchRepos } from 'api/githubAPI';
 import { Repo } from 'features/reposList/types';
-import { setTotalPages } from '../pagination/pageSlice';
+import { setTotalPages } from 'features/pagination/pageSlice';
 
 type IRepos = Repo[];
 
