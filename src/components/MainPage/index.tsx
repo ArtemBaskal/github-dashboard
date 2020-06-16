@@ -3,7 +3,7 @@ import SearchInput from 'features/search/SearchInput';
 import ReposList from 'features/reposList/ReposList';
 import Paginator from 'features/pagination/Paginator';
 
-const Index = () => (
+const MainPage = () => (
   <>
     <SearchInput />
     <ReposList />
@@ -11,4 +11,4 @@ const Index = () => (
   </>
 );
 
-export default Index;
+export default MainPage;

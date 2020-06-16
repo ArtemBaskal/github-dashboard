@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import { Link } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -11,11 +11,13 @@ import Loading from 'components/Loading';
 import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
 import 'features/repoDetails/RepoDetails.css';
 
-type IProps = { id: string }
+type IProps = {}
 
-const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
+const RepoDetails = React.memo((props: RouteChildrenProps) => {
   const { location: { pathname } } = props;
   const id = pathname.replace(/^\//, '');
+  // Used for catching error in error boundary https://github.com/facebook/react/issues/14981
+  const [, setState] = useState();
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -26,9 +28,18 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
     description, owner, contributors, html_url,
   } = repoDetails;
 
-  useEffect((): () => void => {
-    dispatch(loadRepoDetails(id));
-    return () => dispatch(resetRepoDetails());
+  useEffect(() => {
+    (async () => {
+      try {
+        await dispatch(loadRepoDetails(id));
+      } catch (error) {
+        setState(() => {
+          throw error;
+        });
+      }
+    })();
+
+    return () => { dispatch(resetRepoDetails()); };
   }, [dispatch, id]);
 
   return (

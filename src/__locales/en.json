@@ -13,5 +13,6 @@
     "contributions": "Contributions",
     "loading": "Loading...",
     "to_main_page": "To the main page",
-    "repos_found_approximately": "Repos found: approximately"
+    "repos_found_approximately": "Repos found: approximately",
+    "error": "Error"
 }
