@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -16,7 +16,7 @@ const RepoDetails = lazy(() => import('features/repoDetails/RepoDetails'));
 
 // TODO: add aria attributes for accessibility
 // TODO: add black theme
-// TODO: upload to GitHub pages
+// TODO: cache api calls https://developer.github.com/v3/#conditional-requests
 const App = () => (
   <>
     <div className="container">
