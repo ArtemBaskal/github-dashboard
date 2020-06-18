@@ -9,7 +9,7 @@
     border: 1px solid var(--gray-e5);
 }
 
-.paginator__button:not(:disabled):hover {
+.paginator__button:enabled:hover {
     background-color: var(--lightblue);
 }
 

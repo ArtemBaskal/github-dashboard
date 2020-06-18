@@ -14,13 +14,13 @@ const RepoCard = ({
   const currentLocale = useSelector((state: RootState) => state.i18n.currentLocale);
 
   return (
-    <>
+    <main className="repo-card__container">
       <div className="repo-card">
         <h3 className="repo-card__name--title">
           {id ? (
             <Link
               to={id.toString()}
-              className="repo-card__name repo-card__name--link"
+              className="repo-card__name"
               aria-label={name}
             >
               {name}
@@ -53,7 +53,7 @@ const RepoCard = ({
         )}
       </div>
       <br />
-    </>
+    </main>
   );
 };
 

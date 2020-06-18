@@ -1,14 +1,19 @@
+.repo-card__container {
+    font-weight: 200;
+}
+
 .repo-card__name {
     text-decoration: none;
 }
 
 .repo-card__name--link {
     color: var(--black-base);
+    font-weight: 300;
 }
 
 .repo-card__name--title {
     margin-bottom: 1rem;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .repo-card__name--link:hover {

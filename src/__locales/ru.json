@@ -2,7 +2,7 @@
     "repo_search": "Поиск репозитория",
     "repo": "Репозиторий",
     "language": "Язык",
-    "go_to_main_page": "На главную страницу",
+    "to_main_page": "На главную страницу",
     "page_is_not_found": "Страница не найдена",
     "last_update": "Последнее изменение",
     "previous": "Предыдущая",
@@ -13,7 +13,6 @@
     "nothing_is_found": "Ничего не найдено",
     "contributions": "Личный вклад",
     "loading": "Загрузка...",
-    "to_main_page": "На главную страницу",
     "repos_found_approximately": "Найдено репозиториев: примерно",
     "error": "Ошибка",
     "fetching_contributors": "Получение контрибьютеров..."

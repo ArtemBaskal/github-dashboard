@@ -50,9 +50,13 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
         ? <Loading text={t('loading')} />
         : (
           <>
-            <h3 className="repo-details__link--main-page">
-              <Link to={ROUTES.MAIN}>{t('to_main_page')}</Link>
-            </h3>
+            <nav className="repo-details__link--main-page">
+              <Link to={ROUTES.MAIN}>
+                &#10229;
+                &nbsp;
+                {t('to_main_page')}
+              </Link>
+            </nav>
             <RepoInfo
               name={name}
               stargazers_count={stargazers_count}
@@ -61,22 +65,23 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
             />
             {owner && (
             <div className="repo-details__owner">
-              {t('owner')}
+              <h3 className="repo-details__owner--header">{t('owner')}</h3>
               <Profile {...owner} />
               {language && <span className="repo-details__language">{language}</span>}
             </div>
             )}
-            <div className="repo-details__description">{description}</div>
-            {isFetchingContributors && <h3>{t('fetching_contributors')}</h3>}
+            {isFetchingContributors
+              ? <h3>{t('fetching_contributors')}</h3>
+              : <p className="repo-details__description">{description}</p>}
             {contributors && contributors.length > 1 && (
-            <>
-              <h4 className="repo-details__header--contributors">{t('top_contributors')}</h4>
+            <section>
+              <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>
               <ul className="contributors__container">
                 {contributors.slice(0, TOP_CONTRIBUTORS_QUANTITY).map((
                   contributor,
                 ) => <li key={contributor.login}><Profile {...contributor} /></li>)}
               </ul>
-            </>
+            </section>
             )}
           </>
         )}

@@ -13,6 +13,7 @@
 
 .repo-details__link--main-page {
     margin: 1rem 0;
+    font-weight: 300;
 }
 
 .repo-details__language {
@@ -20,6 +21,7 @@
     background-color: var(--purple-base);
     padding: 0.2rem 0.6rem;
     border-radius: 1rem;
+    font-weight: 100;
 }
 
 .repo-details__description {
@@ -27,21 +29,19 @@
     border-top: 1px solid var(--gray-e5);
     border-bottom: 1px solid var(--gray-e5);
     margin: 1.5rem 0;
+    font-weight: 200;
 }
 
 .repo-details__header--contributors {
     padding: 1rem 0;
+    text-align: center;
+}
+.repo-details__owner {
+    align-items: center;
+    text-align: center;
 }
 
 @media (max-width: 525px) {
-    .repo-details__header--contributors {
-        text-align: center;
-    }
-
-    .repo-details__owner {
-        align-items: center;
-        text-align: center;
-    }
     .contributors__container {
         grid-template-columns: repeat(2, min-content);
         justify-content: center;

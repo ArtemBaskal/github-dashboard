@@ -29,3 +29,5 @@ export const LANGUAGES = {
   en: { name: 'English', emojiFlag: '🇬🇧' },
   ru: { name: 'Русский', emojiFlag: '🇷🇺' },
 };
+
+export const PROJECT_REPO_LINK = 'https://github.com/ArtemBaskal/github-dashboard';

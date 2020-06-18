@@ -1,7 +1,9 @@
 .profile__container {
-    width: 16rem;
+    width: 14rem;
     background-color: var(--white-base);
     padding: 1rem 0 2.5rem;
+    width: 100%;
+    align-items: center;
 }
 
 .profile__login {
@@ -9,6 +11,7 @@
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 600;
 }
 
 .profile__avatar {
@@ -22,11 +25,7 @@
     text-align: center;
     color: var(--black-base);
     max-width: 100%;
-}
-
-@media (max-width: 525px) {
-    .profile__container {
-        width: 100%;
-        align-items: center;
-    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: lighter;
 }

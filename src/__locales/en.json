@@ -2,7 +2,7 @@
     "repo_search": "Repository search",
     "repo": "Repository",
     "language": "Language",
-    "go_to_main_page": "To main page",
+    "to_main_page": "To the main page",
     "page_is_not_found": "Page is not found",
     "last_update": "Last update",
     "previous": "Previous",
@@ -13,7 +13,6 @@
     "nothing_is_found": "Nothing is found",
     "contributions": "Contributions",
     "loading": "Loading...",
-    "to_main_page": "To the main page",
     "repos_found_approximately": "Repos found: approximately",
     "error": "Error",
     "fetching_contributors": "Fetching contributors..."

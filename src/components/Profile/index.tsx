@@ -8,14 +8,14 @@ const Profile = ({
 }: Partial<Contributor>) => {
   const [t] = useTranslation();
   return (
-    <div className="profile__container">
+    <figcaption className="profile__container">
       <a href={html_url}>
         <img src={avatar_url} alt={login} loading="lazy" className="profile__avatar" />
-        <h3 className="profile__login">{login}</h3>
+        <figure className="profile__login">{login}</figure>
         {contributions
-                && <small className="profile__contributions">{`${t('contributions')}: ${contributions}`}</small>}
+                && <strong className="profile__contributions">{`${t('contributions')}: ${contributions}`}</strong>}
       </a>
-    </div>
+    </figcaption>
   );
 };
 

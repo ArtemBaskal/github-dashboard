@@ -9,7 +9,11 @@ const NotFoundPage = () => {
   return (
     <div className="not-found-page__container">
       <h2 className="not-found-page__header">{t('page_is_not_found')}</h2>
-      <Link to={ROUTES.MAIN}>{t('go_to_main_page')}</Link>
+      <Link to={ROUTES.MAIN}>
+        &#10229;
+        &nbsp;
+        {t('to_main_page')}
+      </Link>
     </div>
   );
 };

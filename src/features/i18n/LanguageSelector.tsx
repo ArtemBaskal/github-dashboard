@@ -20,11 +20,12 @@ const LanguageSelector = () => {
 
   return (
     <div className="language-selector">
-      {t('language')}
+      <label htmlFor="language-select">{t('language')}</label>
       <select
         value={currentLanguage}
         onChange={changeLanguage}
         className="select select--language"
+        id="language-select"
       >
         {Object.entries(LANGUAGES)
           .map(([languageCode, { name, emojiFlag }]) => (
