@@ -21,6 +21,7 @@ const RepoCard = ({
             <Link
               to={id.toString()}
               className="repo-card__name repo-card__name--link"
+              aria-label={name}
             >
               {name}
             </Link>
@@ -47,7 +48,7 @@ const RepoCard = ({
         <div>
           <span>&#128279;</span>
           &nbsp;
-          <a href={html_url} className="repo-card__name repo-card__name--link">{html_url}</a>
+          <a href={html_url} className="repo-card__name repo-card__name--link" aria-label={t('repo')}>{html_url}</a>
         </div>
         )}
       </div>

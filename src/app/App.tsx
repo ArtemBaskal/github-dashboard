@@ -14,7 +14,6 @@ const MainPage = lazy(() => import('components/MainPage'));
 const NotFoundPage = lazy(() => import('components/NotFoundPage'));
 const RepoDetails = lazy(() => import('features/repoDetails/RepoDetails'));
 
-// TODO: add aria attributes for accessibility
 // TODO: add black theme
 // TODO: cache api calls https://developer.github.com/v3/#conditional-requests
 // TODO: describe script in readme

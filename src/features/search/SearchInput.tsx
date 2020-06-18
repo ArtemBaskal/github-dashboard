@@ -69,6 +69,7 @@ const SearchInput = () => {
         placeholder={t('repo_search')}
         onChange={onChange}
         className="search-input"
+        aria-label="search"
       />
       {renderHint()}
     </div>
