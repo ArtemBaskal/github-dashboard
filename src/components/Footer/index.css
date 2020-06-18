@@ -12,3 +12,11 @@
     font-weight: 100;
     font-size: 1.9rem;
 }
+
+@media (max-width: 400px) {
+    .footer__year {
+        top: 6rem;
+        left: 40%;
+        padding-bottom: 2rem;
+    }
+}

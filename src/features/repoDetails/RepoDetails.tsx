@@ -74,14 +74,14 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
               ? <h3>{t('fetching_contributors')}</h3>
               : <p className="repo-details__description">{description}</p>}
             {contributors && contributors.length > 1 && (
-            <section>
+            <article>
               <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>
               <ul className="contributors__container">
                 {contributors.slice(0, TOP_CONTRIBUTORS_QUANTITY).map((
                   contributor,
                 ) => <li key={contributor.login}><Profile {...contributor} /></li>)}
               </ul>
-            </section>
+            </article>
             )}
           </>
         )}

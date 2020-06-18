@@ -1,8 +1,9 @@
-.paginator__container{
+.paginator__container {
     padding: 1rem 0;
     display: flex;
     justify-content: center;
     font-weight: 200;
+    position: relative;
 }
 
 .search-input__container {
@@ -11,7 +12,21 @@
     display: flex;
     justify-content: center;
     font-weight: 300;
+    width: 50%;
 }
+
+@media (max-width: 768px) {
+    .search-input__container {
+        width: 70%;
+    }
+}
+
+@media (max-width: 525px) {
+    .search-input__container {
+        width: 100%;
+    }
+}
+
 
 .search-input {
     box-sizing: border-box;

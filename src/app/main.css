@@ -9,6 +9,10 @@
     --darkblue: darkblue;
     --link-blue: rgb(0, 0, 238);
     --black-base: black;
+    --light-base: #1fd1f9;
+    --purple-dark: #b621fe;
+    --purple-gradient: linear-gradient(315deg, var(--light-base) 0%, var(--purple-dark) 74%);
+    --blue-gradient: linear-gradient(315deg, var(--light-base)0%, var(--purple-base) 74%);
 }
 
 * {

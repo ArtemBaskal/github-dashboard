@@ -5,7 +5,7 @@ import { ROUTES } from 'utils/consts';
 import log from 'utils/log';
 
 type IProps = { children: JSX.Element };
-type IState = {error: null | string};
+type IState = { error: null | string };
 
 class ErrorBoundary extends Component<IProps, IState> {
   constructor(props: IProps) {
@@ -34,7 +34,11 @@ class ErrorBoundary extends Component<IProps, IState> {
             {error}
           </h1>
           <h3 className="repo-details__link--main-page">
-            <Link to={ROUTES.MAIN}><Trans>to_main_page</Trans></Link>
+            <Link to={ROUTES.MAIN}>
+              &#10229;
+              &nbsp;
+              <Trans>to_main_page</Trans>
+            </Link>
           </h3>
         </>
       );

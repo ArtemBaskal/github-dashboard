@@ -1,0 +1,24 @@
+.header {
+    height: 5rem;
+    background-color: var(--purple-base);
+    background-image: var(--blue-gradient);
+}
+
+.header__link {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.header__link--name {
+    color: var(--white-base);
+}
+
+.header__link--name:hover {
+    color: var(--light-base)
+}
+
+.header__image {
+    height: 100%;
+    width: 100%;
+}

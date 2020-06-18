@@ -43,27 +43,27 @@ const Paginator = () => {
   });
 
   return (
-        totalPages as number > 0 ? (
-          <div className="paginator__container">
-            <button
-              className="paginator__button"
-              type="button"
-              disabled={isFirstPage || noPages || isSearching}
-              onClick={decreaseCurrentPage}
-            >
-              {t('previous')}
-            </button>
-            {paginator}
-            <button
-              className="paginator__button"
-              type="button"
-              disabled={isLastPage || noPages || isSearching}
-              onClick={increaseCurrentPage}
-            >
-              {t('next')}
-            </button>
-          </div>
-        ) : <></>
+    totalPages > 1 ? (
+      <div className="paginator__container">
+        <button
+          className="paginator__button"
+          type="button"
+          disabled={isFirstPage || noPages || isSearching}
+          onClick={decreaseCurrentPage}
+        >
+          {t('previous')}
+        </button>
+        {paginator}
+        <button
+          className="paginator__button"
+          type="button"
+          disabled={isLastPage || noPages || isSearching}
+          onClick={increaseCurrentPage}
+        >
+          {t('next')}
+        </button>
+      </div>
+    ) : <></>
   );
 };
 

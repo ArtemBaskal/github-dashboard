@@ -11,7 +11,7 @@ const ReposList = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <main className="repos-list__container">
+    <section className="repos-list__container">
       {!isSearching && repos.length === 0 && <h4 className="repos-list__info--empty">{t('nothing_is_found')}</h4>}
       {repos.length > 0 && (
         <ul className="repo-list">
@@ -30,7 +30,7 @@ const ReposList = (): JSX.Element => {
           ))}
         </ul>
       )}
-    </main>
+    </section>
   );
 };
 

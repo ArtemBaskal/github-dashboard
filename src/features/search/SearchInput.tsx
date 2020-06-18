@@ -51,19 +51,29 @@ const SearchInput = () => {
 
   const reposFound = pages > 1 ? pages * REPOS_PER_PAGE : Object.keys(repos).length;
 
+  const id = 'input-search';
+
   const renderHint = () => {
     if (isSearching) {
-      return <div className="search-input__status">{t('search')}</div>;
+      return <label htmlFor={id} className="search-input__status">{t('search')}</label>;
     }
     if (reposFound) {
-      return <div className="search-input__status">{`${t('repos_found_approximately')} ${reposFound}`}</div>;
+      return (
+        <label
+          htmlFor={id}
+          className="search-input__status"
+        >
+          {`${t('repos_found_approximately')} ${reposFound}`}
+        </label>
+      );
     }
     return null;
   };
 
   return (
-    <div className="search-input__container">
+    <section className="search-input__container">
       <input
+        id={id}
         type="text"
         value={search}
         placeholder={t('repo_search')}
@@ -72,7 +82,7 @@ const SearchInput = () => {
         aria-label="search"
       />
       {renderHint()}
-    </div>
+    </section>
   );
 };
 
