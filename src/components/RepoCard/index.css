@@ -1,17 +1,17 @@
-.repo-info__name {
+.repo-card__name {
     text-decoration: none;
 }
 
-.repo-info__name--link {
+.repo-card__name--link {
     color: var(--black-base);
 }
 
-.repo-info__name--title {
+.repo-card__name--title {
     margin-bottom: 1rem;
     font-weight: bold;
 }
 
-.repo-info__name--link:hover {
+.repo-card__name--link:hover {
     text-decoration: underline;
 }
 

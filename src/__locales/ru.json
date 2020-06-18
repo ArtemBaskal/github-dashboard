@@ -8,11 +8,12 @@
     "next": "Следующая",
     "search": "Поиск...",
     "owner": "Владелец",
-    "top_contributors": "Топ активных контрибьютеров",
+    "top_contributors": "Топ контрибьютеров",
     "nothing_is_found": "Ничего не найдено",
     "contributions": "Личный вклад",
     "loading": "Загрузка...",
     "to_main_page": "На главную страницу",
     "repos_found_approximately": "Найдено репозиториев: примерно",
-    "error": "Ошибка"
+    "error": "Ошибка",
+    "fetching_contributors": "Получение контрибьютеров..."
 }

@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import { Repo } from 'features/reposList/types';
 import { formatDate } from 'utils/helpers';
 import { RootState } from 'app/rootReducer';
-import 'components/RepoInfo/index.css';
+import 'components/RepoCard/index.css';
 
-const RepoInfo = ({
+const RepoCard = ({
   id, name, stargazers_count, updated_at, html_url,
 }: Partial<Repo>) => {
   const { t } = useTranslation();
@@ -15,12 +15,12 @@ const RepoInfo = ({
 
   return (
     <>
-      <div className="repo-info">
-        <h3 className="repo-info__name--title">
+      <div className="repo-card">
+        <h3 className="repo-card__name--title">
           {id ? (
             <Link
               to={id.toString()}
-              className="repo-info__name repo-info__name--link"
+              className="repo-card__name repo-card__name--link"
             >
               {name}
             </Link>
@@ -45,9 +45,9 @@ const RepoInfo = ({
         )}
         {html_url && (
         <div>
-          &#128279;
+          <span>&#128279;</span>
           &nbsp;
-          <a href={html_url} className="repo-info__name repo-info__name--link">{html_url}</a>
+          <a href={html_url} className="repo-card__name repo-card__name--link">{html_url}</a>
         </div>
         )}
       </div>
@@ -56,4 +56,4 @@ const RepoInfo = ({
   );
 };
 
-export default RepoInfo;
+export default RepoCard;

@@ -5,7 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { TOP_CONTRIBUTORS_QUANTITY, ROUTES } from 'utils/consts';
 import { RootState } from 'app/rootReducer';
-import RepoInfo from 'components/RepoInfo';
+import RepoInfo from 'components/RepoCard';
 import Profile from 'components/Profile';
 import Loading from 'components/Loading';
 import withErrorBoundary from 'utils/HOCs/withErrorBoundary';
@@ -27,6 +27,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
   const {
     name, stargazers_count, updated_at, language,
     description, owner, contributors, html_url,
+    isFetchingContributors,
   } = repoDetails;
 
   useEffect(() => {
@@ -59,13 +60,14 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
               html_url={html_url}
             />
             {owner && (
-            <>
+            <div className="repo-details__owner">
               {t('owner')}
               <Profile {...owner} />
               {language && <span className="repo-details__language">{language}</span>}
-            </>
+            </div>
             )}
             <div className="repo-details__description">{description}</div>
+            {isFetchingContributors && <h3>{t('fetching_contributors')}</h3>}
             {contributors && contributors.length > 1 && (
             <>
               <h4 className="repo-details__header--contributors">{t('top_contributors')}</h4>

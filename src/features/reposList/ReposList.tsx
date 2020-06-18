@@ -2,7 +2,7 @@ import React from 'react';
 import { RootState } from 'app/rootReducer';
 import { useTranslation } from 'react-i18next';
 import { shallowEqual, useSelector } from 'react-redux';
-import RepoInfo from 'components/RepoInfo';
+import RepoCard from 'components/RepoCard';
 import 'features/reposList/RepoList.css';
 
 const ReposList = (): JSX.Element => {
@@ -19,7 +19,7 @@ const ReposList = (): JSX.Element => {
             id, name, stargazers_count, updated_at, html_url,
           }) => (
             <li key={id} className="repo-list--item">
-              <RepoInfo
+              <RepoCard
                 id={id}
                 name={name}
                 stargazers_count={stargazers_count}

@@ -4,15 +4,44 @@ import { AppThunk, AppDispatch } from 'app/store';
 import { fetchRepoDetails, fetchContributors } from 'api/githubAPI';
 import { Repo, Contributor } from 'features/reposList/types';
 
-const initialState: Partial<Repo> = {};
+const initialState: Partial<Repo> & { isFetchingContributors?: boolean } = {
+  isFetchingContributors: true,
+};
 
 const repoDetailSlice = createSlice({
-  name: 'repoDetail',
+  name: 'repoDetails',
   initialState,
   reducers: {
-    getRepoDetails: (state, action: PayloadAction<Repo>): Repo => action.payload,
+    getRepoDetails(state, action: PayloadAction<Repo>): Repo {
+      const {
+        id,
+        name,
+        stargazers_count,
+        updated_at,
+        language,
+        description,
+        owner,
+        contributors,
+        html_url,
+      } = action.payload;
+
+      state = {
+        id,
+        name,
+        stargazers_count,
+        updated_at,
+        language,
+        description,
+        owner,
+        contributors,
+        html_url,
+      };
+
+      return state as Repo;
+    },
     getRepoContributors: (state, action: PayloadAction<Contributor[]>): Repo => {
       state.contributors = action.payload;
+      state.isFetchingContributors = false;
 
       return state as Repo;
     },

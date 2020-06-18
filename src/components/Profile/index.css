@@ -7,6 +7,8 @@
 .profile__login {
     max-width: 100%;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .profile__avatar {
@@ -20,4 +22,11 @@
     text-align: center;
     color: var(--black-base);
     max-width: 100%;
+}
+
+@media (max-width: 525px) {
+    .profile__container {
+        width: 100%;
+        align-items: center;
+    }
 }
