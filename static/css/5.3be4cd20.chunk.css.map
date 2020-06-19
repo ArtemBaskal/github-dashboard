@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,wBACI,aACJ,CAEA,2BACI,eACJ","file":"5.3be4cd20.chunk.css","sourcesContent":[".not-found-page__header {\n    margin: 1rem 0;\n}\n\n.not-found-page__container {\n    font-weight: 300;\n}\n"]}
