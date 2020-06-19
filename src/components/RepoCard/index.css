@@ -1,5 +1,6 @@
 .repo-card__container {
     font-weight: 200;
+    overflow-wrap: break-word;
 }
 
 .repo-card__name {

@@ -21,6 +21,12 @@
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .repos-list__container {
+        width: 70%;
+    }
+}
+
 @media (max-width: 525px) {
     .repos-list__container {
         width: 100%;

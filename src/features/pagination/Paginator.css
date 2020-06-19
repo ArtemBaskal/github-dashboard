@@ -23,3 +23,10 @@
     border: 1px solid var(--purple-base);
     background-color: var(--purple-base);
 }
+
+
+@media (max-width: 525px) {
+    .paginator__button:not(:first-child):not(:last-child) {
+        display: none;
+    }
+}
