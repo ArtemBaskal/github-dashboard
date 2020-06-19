@@ -12,7 +12,8 @@
     --light-base: #1fd1f9;
     --purple-dark: #b621fe;
     --purple-gradient: linear-gradient(315deg, var(--light-base) 0%, var(--purple-dark) 74%);
-    --blue-gradient: linear-gradient(315deg, var(--light-base)0%, var(--purple-base) 74%);
+    --reverse-purple-gradient: linear-gradient(45deg, var(--light-base) 0%, var(--purple-dark) 74%);
+    --blue-gradient: linear-gradient(315deg, var(--light-base) 0%, var(--purple-base) 74%);
 }
 
 * {

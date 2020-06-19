@@ -1,21 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { ROUTES } from 'utils/consts';
-import 'components/NotFoundPage/index.css';
+import ErrorMessage from 'components/ErrorMessage';
 
-const NotFoundPage = () => {
-  const { t } = useTranslation();
-  return (
-    <div className="not-found-page__container">
-      <h2 className="not-found-page__header">{t('page_is_not_found')}</h2>
-      <Link to={ROUTES.MAIN}>
-        &#10229;
-        &nbsp;
-        {t('to_main_page')}
-      </Link>
-    </div>
-  );
-};
+const NotFoundPage = () => <ErrorMessage message="page_is_not_found" />;
 
 export default NotFoundPage;

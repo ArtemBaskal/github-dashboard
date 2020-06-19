@@ -16,11 +16,6 @@
     width: 60%;
 }
 
-.repo-details__link--main-page {
-    margin: 1rem 0;
-    font-weight: 300;
-}
-
 .repo-details__language {
     color: var(--white-base);
     padding: 0.2rem 0.6rem;
@@ -28,6 +23,10 @@
     font-weight: 100;
     background-color: var(--light-base);
     background-image: var(--purple-gradient);
+}
+
+.repo-details__language:hover {
+    background-image: var(--reverse-purple-gradient);
 }
 
 .repo-details__description {

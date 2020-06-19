@@ -1,0 +1,8 @@
+.error-message__header {
+    margin: 1rem 0;
+}
+
+.error-message__container {
+    font-weight: 300;
+    text-align: center;
+}

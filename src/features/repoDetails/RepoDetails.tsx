@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { RouteChildrenProps } from 'react-router';
-import { Link } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { TOP_CONTRIBUTORS_QUANTITY, ROUTES } from 'utils/consts';
+import { TOP_CONTRIBUTORS_QUANTITY } from 'utils/consts';
 import { RootState } from 'app/rootReducer';
 import RepoInfo from 'components/RepoCard';
 import Profile from 'components/Profile';
 import Loading from 'components/Loading';
+import MainPageLink from 'components/MainPageLink';
 import withErrorBoundary from 'utils/HOCs/withErrorBoundary';
 import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
 import 'features/repoDetails/RepoDetails.css';
@@ -41,7 +41,9 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
       }
     })();
 
-    return () => { dispatch(resetRepoDetails()); };
+    return () => {
+      dispatch(resetRepoDetails());
+    };
   }, [dispatch, id]);
 
   return (
@@ -50,13 +52,7 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
         ? <Loading text={t('loading')} />
         : (
           <>
-            <nav className="repo-details__link--main-page">
-              <Link to={ROUTES.MAIN}>
-                &#10229;
-                &nbsp;
-                {t('to_main_page')}
-              </Link>
-            </nav>
+            <MainPageLink />
             <RepoInfo
               name={name}
               stargazers_count={stargazers_count}
