@@ -15,5 +15,6 @@
     "loading": "Загрузка...",
     "repos_found_approximately": "Найдено репозиториев: примерно",
     "error": "Ошибка",
-    "fetching_contributors": "Получение контрибьютеров..."
+    "fetching_contributors": "Получение контрибьютеров...",
+    "scroll_to_top": "Скролл вверх"
 }

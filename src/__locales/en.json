@@ -15,5 +15,6 @@
     "loading": "Loading...",
     "repos_found_approximately": "Repos found: approximately",
     "error": "Error",
-    "fetching_contributors": "Fetching contributors..."
+    "fetching_contributors": "Fetching contributors...",
+    "scroll_to_top": "Scroll to top"
 }

@@ -23,6 +23,7 @@
     font-weight: 100;
     background-color: var(--light-base);
     background-image: var(--purple-gradient);
+    user-select: all;
 }
 
 .repo-details__language:hover {

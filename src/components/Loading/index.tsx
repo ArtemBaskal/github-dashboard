@@ -8,7 +8,7 @@ type IProps = {
 
 const Loading = ({ text }: IProps) => {
   const { t } = useTranslation();
-  return <h4 className="loader__text">{text || t('loading')}</h4>;
+  return <h1 className="loader__text">{text || t('loading')}</h1>;
 };
 
 export default Loading;

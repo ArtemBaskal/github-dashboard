@@ -14,11 +14,11 @@
     color: var(--white-base);
 }
 
-.header__link--name:hover {
-    color: var(--light-base)
-}
-
 .header__image {
     height: 100%;
     width: 100%;
+}
+
+.header__link:hover .header__link--name {
+    color: var(--light-base);
 }

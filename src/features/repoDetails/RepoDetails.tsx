@@ -60,16 +60,16 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
               html_url={html_url}
             />
             {owner && (
-            <div className="repo-details__owner">
+            <section className="repo-details__owner">
               <h3 className="repo-details__owner--header">{t('owner')}</h3>
               <Profile {...owner} />
               {language && <span className="repo-details__language">{language}</span>}
-            </div>
+            </section>
             )}
             {isFetchingContributors
               ? <h3>{t('fetching_contributors')}</h3>
               : <p className="repo-details__description">{description}</p>}
-            {contributors && contributors.length > 1 && (
+            {!isFetchingContributors && contributors && contributors.length > 1 && (
             <article>
               <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>
               <ul className="contributors__container">

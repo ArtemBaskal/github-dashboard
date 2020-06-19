@@ -1,0 +1,20 @@
+.scroller {
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    position: sticky;
+    bottom: 1rem;
+    left: 90%;
+    width: 3rem;
+    background-color: #654ff0;
+    color: var(--white-base);
+    border-radius: 1rem;
+    opacity: 0.8;
+    transition-property: opacity;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.scroller:hover {
+    opacity: 1;
+}
