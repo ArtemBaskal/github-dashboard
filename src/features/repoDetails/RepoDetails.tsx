@@ -68,11 +68,13 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
             <section className="repo-details__owner">
               <h3 className="repo-details__owner--header">{t('owner')}</h3>
               <Profile {...owner} />
-              {isFetchingLanguages ? <h3>{t('fetching')}</h3> : <TagsContainer tags={languages} />}
+              {isFetchingLanguages
+                ? <Loading text={t('fetching')} />
+                : <TagsContainer tags={languages} />}
               {description && <p className="repo-details__description">{description}</p>}
             </section>
             {isFetchingContributors
-              ? <h3>{t('fetching')}</h3>
+              ? <Loading text={t('fetching')} />
               : contributors && contributors.length > 1 && (
               <section>
                 <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>
