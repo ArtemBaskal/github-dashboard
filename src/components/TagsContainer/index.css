@@ -1,0 +1,20 @@
+.tag {
+    color: var(--white-base);
+    padding: 0.2rem 0.6rem;
+    margin: 0.3rem;
+    border-radius: 1rem;
+    font-weight: 200;
+    background-color: var(--light-base);
+    background-image: var(--purple-gradient);
+    user-select: all;
+    display: inline-block;
+    font-size: 1.5rem;
+}
+
+.tags__container {
+    max-width: 100%;
+}
+
+.tag:hover {
+    background-image: var(--reverse-purple-gradient);
+}

@@ -80,14 +80,16 @@ export const loadRepoDetails = (id: string): AppThunk => async (dispatch: AppDis
     dispatch(repoDetailSlice.actions.getRepoDetails(repoDetails));
   }
 
-  const repoContributors = await fetchContributors(repoDetails.contributors_url);
+  const { contributors_url, languages_url } = repoDetails;
+  const [repoContributors, repoLanguages] = await Promise
+    .all([fetchContributors(contributors_url), fetchLanguages(languages_url)]);
+
   if (typeof repoContributors === 'string') {
     throw repoContributors;
   } else {
     dispatch(repoDetailSlice.actions.getRepoContributors(repoContributors));
   }
 
-  const repoLanguages = await fetchLanguages(repoDetails.languages_url);
   if (typeof repoLanguages === 'string') {
     throw repoContributors;
   } else {

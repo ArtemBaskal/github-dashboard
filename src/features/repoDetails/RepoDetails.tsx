@@ -7,6 +7,7 @@ import RepoInfo from 'components/RepoCard';
 import Profile from 'components/Profile';
 import Loading from 'components/Loading';
 import MainPageLink from 'components/MainPageLink';
+import TagsContainer from 'components/TagsContainer';
 import withErrorBoundary from 'utils/HOCs/withErrorBoundary';
 import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
 import 'features/repoDetails/RepoDetails.css';
@@ -63,18 +64,13 @@ const RepoDetails = React.memo((props: RouteChildrenProps<IProps>) => {
               updated_at={updated_at}
               html_url={html_url}
             />
-            {owner && (
+            {(isFetchingContributors || isFetchingLanguages) && <h3>{t('fetching')}</h3>}
             <section className="repo-details__owner">
               <h3 className="repo-details__owner--header">{t('owner')}</h3>
               <Profile {...owner} />
-                {!isFetchingLanguages && languages && languages.map((language) => (
-                  <span key={language} className="repo-details__language" title={language}>{language}</span>
-                ))}
-                {(isFetchingContributors || isFetchingLanguages)
-                  ? <h3>{t('fetching')}</h3>
-                  : <p className="repo-details__description">{description}</p>}
+              {!isFetchingLanguages && <TagsContainer tags={languages} />}
+              <p className="repo-details__description">{description}</p>
             </section>
-            )}
             {!isFetchingContributors && contributors && contributors.length > 1 && (
             <article>
               <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>

@@ -51,7 +51,7 @@ const SearchInput = () => {
 
   useEffect(() => {
     dispatch(setIsSearching(true));
-  }, [dispatch, trimmedSearch]);
+  }, [dispatch, trimmedSearch, currentPage]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setCurrentPage(FIRST_PAGE));

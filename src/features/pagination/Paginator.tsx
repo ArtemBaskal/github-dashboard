@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { FIRST_PAGE, MAX_SEARCH_PAGE } from 'utils/consts';
@@ -12,25 +12,24 @@ const Paginator = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const totalPages = useSelector((state: RootState) => state.pages.totalPages);
-  const page = useSelector((state: RootState) => state.pages.currentPage);
+  const { totalPages, currentPage } = useSelector((state: RootState) => state.pages, shallowEqual);
   const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
-  const isFirstPage = page === FIRST_PAGE;
-  const isLastPage = page === totalPages;
-  const isSearchEdgePage = page === MAX_SEARCH_PAGE;
+  const isFirstPage = currentPage === FIRST_PAGE;
+  const isLastPage = currentPage === totalPages;
+  const isSearchEdgePage = currentPage === MAX_SEARCH_PAGE;
   const noPages = totalPages === 0;
 
-  const increaseCurrentPage = () => dispatch(setCurrentPage(page as number + 1));
-  const decreaseCurrentPage = () => dispatch(setCurrentPage(page as number - 1));
+  const increaseCurrentPage = () => dispatch(setCurrentPage(currentPage + 1));
+  const decreaseCurrentPage = () => dispatch(setCurrentPage(currentPage - 1));
 
-  const paginator = generatePagesNumeration(page as number, totalPages as number).map((idx) => {
+  const paginator = generatePagesNumeration(currentPage, totalPages).map((idx) => {
     const isNumber = typeof idx === 'number';
     const displayPage = isNumber ? idx as number + 1 : '...';
 
     const handleClick = () => dispatch(setCurrentPage(displayPage as number));
 
-    const isCurrentPage = displayPage === page;
+    const isCurrentPage = displayPage === currentPage;
     const pageClass = classNames('paginator__button', { 'paginator__button--pressed': isCurrentPage });
 
     return (
