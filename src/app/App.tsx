@@ -17,9 +17,6 @@ const NotFoundPage = lazy(() => import('components/NotFoundPage'));
 const RepoDetails = lazy(() => import('features/repoDetails/RepoDetails'));
 
 // TODO: cache api calls https://developer.github.com/v3/#conditional-requests
-// TODO: describe script in readme
-// TODO: add smooth scroll on repo details open?
-// TODO: add black theme?
 const App = () => {
   const ref = useRef<HTMLHeadElement>(null);
 

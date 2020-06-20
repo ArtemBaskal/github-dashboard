@@ -21,7 +21,7 @@ interface IConfig {
         per_page?: number,
     },
     headers: {
-        Authorization?: string,
+        [key: string]: string,
     },
 }
 
@@ -81,7 +81,7 @@ axios.interceptors.request.use((config: Partial<IConfig> = {}) => {
     const { GITHUB_OAUTH_TOKEN } = require('secret.json');
 
     if (!GITHUB_OAUTH_TOKEN) {
-      throw new Error('No Access Token provided. Read the README Access token section for more details: https');
+      throw new Error('Read the README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
     }
 
     // eslint-disable-next-line no-param-reassign

@@ -36,11 +36,10 @@ const RepoCard = ({
                 </div>
         )}
         {updated_at && (
-        <div className="repo-card__point repo-card__point--last-edited">
+        <span className="repo-card__point repo-card__point--last-edited">
           {`${t('last_update')}:`}
-          &nbsp;
           {`${formatDate(updated_at, currentLocale)}`}
-        </div>
+        </span>
         )}
         {html_url && (
         <div className="repo-card__point">
