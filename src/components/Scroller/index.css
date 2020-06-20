@@ -1,13 +1,14 @@
 .scroller {
-    width: 3.5rem;
-    height: 3.5rem;
+    --side: 4rem;
+    width: var(--side);
+    height: var(--side);
     font-size: 1.5rem;
     border-radius: 50%;
     border: none;
     cursor: pointer;
     position: sticky;
-    bottom: 1rem;
-    right: 90%;
+    bottom: 6%;
+    left: 91%;
     background-color: var(--link-blue);
     background-image: var(--blue-gradient);
     color: var(--white-base);

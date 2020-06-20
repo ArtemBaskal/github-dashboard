@@ -1,5 +1,7 @@
-import React, { useEffect, useState, memo } from 'react';
-import { RouteChildrenProps } from 'react-router';
+import React, {
+  useEffect, useState, memo, forwardRef,
+} from 'react';
+import { useLocation } from 'react-router';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { RootState } from 'app/rootReducer';
@@ -8,14 +10,13 @@ import Profile from 'components/Profile';
 import Loading from 'components/Loading';
 import MainPageLink from 'components/MainPageLink';
 import TagsContainer from 'components/TagsContainer';
+import Scroller from 'components/Scroller';
 import withErrorBoundary from 'utils/HOCs/withErrorBoundary';
 import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
 import 'features/repoDetails/RepoDetails.css';
 
-type IProps = {}
-
-const RepoDetails = memo((props: RouteChildrenProps<IProps>) => {
-  const { location: { pathname } } = props;
+const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
+  const { pathname } = useLocation();
   const id = pathname.replace(/^\//, '');
 
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const RepoDetails = memo((props: RouteChildrenProps<IProps>) => {
     return () => {
       dispatch(resetRepoDetails());
     };
-  }, [id]);
+  }, [dispatch, id]);
 
   return (
     <div className="repo-details__container">
@@ -68,7 +69,7 @@ const RepoDetails = memo((props: RouteChildrenProps<IProps>) => {
               <h3 className="repo-details__owner--header">{t('owner')}</h3>
               <Profile {...owner} />
               {isFetchingLanguages ? <h3>{t('fetching')}</h3> : <TagsContainer tags={languages} />}
-              <p className="repo-details__description">{description}</p>
+              {description && <p className="repo-details__description">{description}</p>}
             </section>
             {isFetchingContributors
               ? <h3>{t('fetching')}</h3>
@@ -84,8 +85,10 @@ const RepoDetails = memo((props: RouteChildrenProps<IProps>) => {
               )}
           </>
         )}
+      <Scroller ref={ref} />
     </div>
   );
-}, shallowEqual);
+}),
+shallowEqual);
 
 export default withErrorBoundary(RepoDetails);

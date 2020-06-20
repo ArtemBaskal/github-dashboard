@@ -23,17 +23,19 @@ const SearchInput = () => {
   const currentLocale = useSelector((state: RootState) => state.i18n.currentLocale);
 
   /**
-   * Used for catching error in error boundary https://github.com/facebook/react/issues/14981#issuecomment-468460187.
-   * Make sure the component or its ascendant
-   * is wrapped in withErrorBoundary HOC to throw error safely.
-   */
+     * Used for catching error in error boundary https://github.com/facebook/react/issues/14981#issuecomment-468460187.
+     * Make sure the component or its ascendant
+     * is wrapped in withErrorBoundary HOC to throw error safely.
+     */
   const [, setErrorBoundary] = useState();
 
-  const debouncedSearchTerm = useDebounce(searchTerm, INPUT_DEBOUNCE_DELAY);
   const trimmedSearch = searchTerm.trim();
+  const debouncedSearchTerm = useDebounce(trimmedSearch, INPUT_DEBOUNCE_DELAY);
   const search = trimmedSearch ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
 
   useEffect(() => {
+    dispatch(setIsSearching(true));
+
     (async () => {
       try {
         await dispatch(loadRepos(search, currentPage));
@@ -47,17 +49,19 @@ const SearchInput = () => {
     })();
   },
   // eslint-disable-next-line
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
   [dispatch, setIsSearching, debouncedSearchTerm, currentPage]);
 
-  useEffect(() => {
-    dispatch(setIsSearching(true));
-  }, [dispatch, trimmedSearch, currentPage]);
-
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
     dispatch(setCurrentPage(FIRST_PAGE));
-    dispatch(setSearchTerm(e.target.value));
-  }, []);
+    dispatch(setSearchTerm(value));
+    if (value.trim()) {
+      dispatch(setIsSearching(true));
+    } else {
+      dispatch(setIsSearching(false));
+    }
+  }, [dispatch]);
 
   const reposFound = totalPages > 1 ? totalPages * REPOS_PER_PAGE : Object.keys(repos).length;
 
@@ -92,7 +96,7 @@ const SearchInput = () => {
           className="search-input"
           aria-label="search"
         />
-      ), [id, searchTerm, onChange, t]) }
+      ), [id, searchTerm, onChange, t])}
       {renderHint()}
     </section>
   );

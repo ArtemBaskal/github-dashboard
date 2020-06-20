@@ -4,7 +4,7 @@ import { saveInSessionStorage } from 'utils/helpers';
 
 type IRepos = { isSearching: boolean, searchTerm: string };
 
-const initialState: IRepos = { isSearching: false, searchTerm: sessionStorage.searchTerm || '' };
+const initialState: IRepos = { isSearching: true, searchTerm: sessionStorage.searchTerm || '' };
 
 const searchSlice = createSlice({
   name: 'search',

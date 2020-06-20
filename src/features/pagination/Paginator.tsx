@@ -6,6 +6,7 @@ import { FIRST_PAGE, MAX_SEARCH_PAGE } from 'utils/consts';
 import { RootState } from 'app/rootReducer';
 import { generatePagesNumeration } from 'utils/helpers';
 import { setCurrentPage } from 'features/pagination/pageSlice';
+import { setIsSearching } from 'features/search/searchSlice';
 import 'features/pagination/Paginator.css';
 
 const Paginator = () => {
@@ -20,8 +21,14 @@ const Paginator = () => {
   const isSearchEdgePage = currentPage === MAX_SEARCH_PAGE;
   const noPages = totalPages === 0;
 
-  const increaseCurrentPage = () => dispatch(setCurrentPage(currentPage + 1));
-  const decreaseCurrentPage = () => dispatch(setCurrentPage(currentPage - 1));
+  const increaseCurrentPage = () => {
+    dispatch(setCurrentPage(currentPage + 1));
+    dispatch(setIsSearching(true));
+  };
+  const decreaseCurrentPage = () => {
+    dispatch(setCurrentPage(currentPage - 1));
+    dispatch(setIsSearching(true));
+  };
 
   const paginator = generatePagesNumeration(currentPage, totalPages).map((idx) => {
     const isNumber = typeof idx === 'number';

@@ -44,6 +44,9 @@ const repoDetailSlice = createSlice({
         },
       };
 
+      state.isFetchingContributors = true;
+      state.isFetchingLanguages = true;
+
       return state as Repo;
     },
     getRepoContributors: (state, action: PayloadAction<Contributor[]>): Repo => {

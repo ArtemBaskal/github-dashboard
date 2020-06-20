@@ -1,10 +1,5 @@
 import React, { Suspense, lazy, useRef } from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  RouteChildrenProps,
-  Switch,
-} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { ROUTES } from 'utils/consts';
 import Footer from 'components/Footer';
 import Loading from 'components/Loading';
@@ -29,14 +24,12 @@ const App = () => {
           <Suspense fallback={<Loading />}>
             <div className="main-content">
               <Switch>
-                <Route
-                  path={ROUTES.MAIN}
-                  exact
-                  component={(
-                    props: RouteChildrenProps,
-                  ) => <MainPage {...props} ref={ref} />}
-                />
-                <Route path={ROUTES.REPO_CARD} exact component={RepoDetails} />
+                <Route path={ROUTES.MAIN} exact>
+                  <MainPage ref={ref} />
+                </Route>
+                <Route path={ROUTES.REPO_CARD} exact>
+                  <RepoDetails ref={ref} />
+                </Route>
                 <Route path={ROUTES.NOT_FOUND} component={NotFoundPage} />
               </Switch>
             </div>
