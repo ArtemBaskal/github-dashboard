@@ -48,7 +48,7 @@ const RepoCard = memo(({
             <svg className="repo-card__image--octocat">
               <image href={`${process.env.PUBLIC_URL}/octocat.svg`} width="17" height="17" />
             </svg>
-            {html_url}
+            {new URL(html_url).pathname.slice(1)}
           </a>
         </div>
         )}

@@ -42,5 +42,6 @@
     --side-size: 1.7rem;
     width: var(--side-size);
     height: var(--side-size);
-    margin-right: 0.2rem;
+    margin-right: 0.4rem;
+    transform: translateY(3px);
 }
