@@ -2,6 +2,8 @@
     font-weight: 200;
     overflow-wrap: break-word;
     margin-top: 1.2rem;
+    position: relative;
+    font-weight: 200;
 }
 
 .repo-card__name {
@@ -28,4 +30,17 @@
 
 .icon--gray {
     color: var(--gray-9);
+}
+
+.repo-card__point--last-edited {
+    position: relative;
+    left: 1.9rem;
+    font-size: 1.5rem;
+}
+
+.repo-card__image--octocat {
+    --side-size: 1.7rem;
+    width: var(--side-size);
+    height: var(--side-size);
+    margin-right: 0.2rem;
 }

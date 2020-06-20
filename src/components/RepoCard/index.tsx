@@ -29,26 +29,27 @@ const RepoCard = ({
         </h3>
         {stargazers_count !== undefined
                 && stargazers_count >= 0 && (
-                <div>
+                <div className="repo-card__point">
                   <span className="icon--purple">&#9733;</span>
                   &nbsp;
                   {stargazers_count}
                 </div>
         )}
         {updated_at && (
-        <div>
-          <span className="icon--gray">&#9998;</span>
-          &nbsp;
+        <div className="repo-card__point repo-card__point--last-edited">
           {`${t('last_update')}:`}
           &nbsp;
           {`${formatDate(updated_at, currentLocale)}`}
         </div>
         )}
         {html_url && (
-        <div>
-          <span>&#128279;</span>
-          &nbsp;
-          <a href={html_url} className="repo-card__name repo-card__name--link" aria-label={t('repo')}>{html_url}</a>
+        <div className="repo-card__point">
+          <a href={html_url} className="repo-card__name repo-card__name--link" aria-label={t('repo')}>
+            <svg className="repo-card__image--octocat">
+              <image href={`${process.env.PUBLIC_URL}/octocat.svg`} width="17" height="17" />
+            </svg>
+            {html_url}
+          </a>
         </div>
         )}
       </div>

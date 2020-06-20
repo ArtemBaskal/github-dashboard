@@ -7,7 +7,7 @@ export const REPOS_PER_PAGE = 10;
 
 export const MAX_SEARCH_PAGE = Math.ceil(GITHUB_SEARCH_LIMIT / REPOS_PER_PAGE);
 
-export const PAGINATION_BUTTONS_COUNT = 10;
+export const PAGINATION_BUTTONS_COUNT = 8;
 
 export const TOP_CONTRIBUTORS_QUANTITY = 10;
 

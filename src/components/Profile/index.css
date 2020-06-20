@@ -36,6 +36,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: 200;
+    font-size: 1.4rem !important;
 }
 
 .profile__avatar:hover ~ .profile__contributions, .profile__contributions:hover {

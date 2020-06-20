@@ -15,7 +15,7 @@ const Scroller = forwardRef<HTMLHeadElement>((props, ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  return <button type="button" onClick={onClick} className="scroller" title={t('scroll_to_top')}>&uarr;</button>;
+  return <button type="button" onClick={onClick} className="scroller" title={t('scroll_to_top')}>&#9651;</button>;
 });
 
 export default Scroller;

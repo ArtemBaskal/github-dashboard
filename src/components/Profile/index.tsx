@@ -13,7 +13,13 @@ const Profile = ({
         <img src={avatar_url} alt={login} loading="lazy" className="profile__avatar" />
         <figure className="profile__login">{login}</figure>
         {contributions
-                && <strong className="profile__contributions">{`${t('contributions')}: ${contributions}`}</strong>}
+                && (
+                <strong className="profile__contributions">
+                  {`${t('contributions')}:`}
+                  &nbsp;
+                  {`${contributions}`}
+                </strong>
+                )}
       </a>
     </figcaption>
   );
