@@ -20,13 +20,17 @@
 
 .paginator__button--pressed {
     color: var(--white-base) !important;
-    border: 1px solid var(--purple-base);
+    border: 1px solid var(--lightgray);
     background-color: var(--purple-base);
+    background-image: var(--purple-gradient);
 }
 
+.paginator__button--pressed:hover {
+    background-image: var(--reverse-purple-gradient);
+}
 
-@media (max-width: 525px) {
-    .paginator__button:not(:first-child):not(:last-child) {
+@media (max-width: 675px) {
+    .paginator__button:not(:first-child):not(:last-child):not(.paginator__button--pressed) {
         display: none;
     }
 }

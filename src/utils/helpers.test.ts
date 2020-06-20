@@ -1,35 +1,34 @@
 /* global describe it expect  */
-import { getPageNumbers, formatDate, saveInSessionStorage } from 'utils/helpers';
+import { generatePagesNumeration, formatDate, saveInSessionStorage } from 'utils/helpers';
 
 describe('getPageNumbers', () => {
   it('limit the left edge', () => {
-    expect(getPageNumbers(1, 20, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    expect(getPageNumbers(2, 20, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    expect(getPageNumbers(3, 20, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    expect(getPageNumbers(4, 20, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    expect(getPageNumbers(5, 20, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    expect(generatePagesNumeration(1, 20, 8)).toEqual([0, 1, 2, 3, 4, 5, 6, 'next-more', 19]);
+    expect(generatePagesNumeration(2, 20, 8)).toEqual([0, 1, 2, 3, 4, 5, 6, 'next-more', 19]);
+    expect(generatePagesNumeration(3, 20, 8)).toEqual([0, 1, 2, 3, 4, 5, 6, 'next-more', 19]);
+    expect(generatePagesNumeration(4, 20, 8)).toEqual([0, 1, 2, 3, 4, 5, 6, 'next-more', 19]);
   });
 
-  it('shift left and right edge by one', () => {
-    expect(getPageNumbers(6, 20, 10)).toEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
-    expect(getPageNumbers(7, 20, 10)).toEqual([3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-    expect(getPageNumbers(8, 20, 10)).toEqual([4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
-    expect(getPageNumbers(9, 20, 10)).toEqual([5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
-    expect(getPageNumbers(10, 20, 10)).toEqual([6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
-    expect(getPageNumbers(11, 20, 10)).toEqual([7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
-    expect(getPageNumbers(12, 20, 10)).toEqual([8, 9, 10, 11, 12, 13, 14, 15, 16, 17]);
-    expect(getPageNumbers(13, 20, 10)).toEqual([9, 10, 11, 12, 13, 14, 15, 16, 17, 18]);
-    expect(getPageNumbers(14, 20, 10)).toEqual([10, 11, 12, 13, 14, 15, 16, 17, 18, 19]);
-    expect(getPageNumbers(15, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+  it('shift left and right edge', () => {
+    expect(generatePagesNumeration(5, 20, 8)).toEqual([0, 'prev-more', 3, 4, 5, 6, 7, 'next-more', 19]);
+    expect(generatePagesNumeration(6, 20, 8)).toEqual([0, 'prev-more', 4, 5, 6, 7, 8, 'next-more', 19]);
+    expect(generatePagesNumeration(7, 20, 8)).toEqual([0, 'prev-more', 5, 6, 7, 8, 9, 'next-more', 19]);
+    expect(generatePagesNumeration(8, 20, 8)).toEqual([0, 'prev-more', 6, 7, 8, 9, 10, 'next-more', 19]);
+    expect(generatePagesNumeration(9, 20, 8)).toEqual([0, 'prev-more', 7, 8, 9, 10, 11, 'next-more', 19]);
+    expect(generatePagesNumeration(10, 20, 8)).toEqual([0, 'prev-more', 8, 9, 10, 11, 12, 'next-more', 19]);
+    expect(generatePagesNumeration(11, 20, 8)).toEqual([0, 'prev-more', 9, 10, 11, 12, 13, 'next-more', 19]);
+    expect(generatePagesNumeration(12, 20, 8)).toEqual([0, 'prev-more', 10, 11, 12, 13, 14, 'next-more', 19]);
+    expect(generatePagesNumeration(13, 20, 8)).toEqual([0, 'prev-more', 11, 12, 13, 14, 15, 'next-more', 19]);
+    expect(generatePagesNumeration(14, 20, 8)).toEqual([0, 'prev-more', 12, 13, 14, 15, 16, 'next-more', 19]);
+    expect(generatePagesNumeration(15, 20, 8)).toEqual([0, 'prev-more', 13, 14, 15, 16, 17, 'next-more', 19]);
   });
 
   it('limit the right edge', () => {
-    expect(getPageNumbers(15, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-    expect(getPageNumbers(16, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-    expect(getPageNumbers(17, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-    expect(getPageNumbers(18, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-    expect(getPageNumbers(19, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
-    expect(getPageNumbers(20, 20, 10)).toEqual([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+    expect(generatePagesNumeration(16, 20, 8)).toEqual([0, 'prev-more', 14, 15, 16, 17, 18, 19]);
+    expect(generatePagesNumeration(17, 20, 8)).toEqual([0, 'prev-more', 14, 15, 16, 17, 18, 19]);
+    expect(generatePagesNumeration(18, 20, 8)).toEqual([0, 'prev-more', 14, 15, 16, 17, 18, 19]);
+    expect(generatePagesNumeration(19, 20, 8)).toEqual([0, 'prev-more', 14, 15, 16, 17, 18, 19]);
+    expect(generatePagesNumeration(20, 20, 8)).toEqual([0, 'prev-more', 14, 15, 16, 17, 18, 19]);
   });
 });
 

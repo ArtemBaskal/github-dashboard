@@ -1,24 +1,24 @@
-import { REPOS_PER_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from 'utils/consts';
+import { PAGINATION_BUTTONS_COUNT, MAX_SEARCH_PAGE, DEFAULT_DATE_FORMAT_OPTIONS } from 'utils/consts';
 import log from 'utils/log';
 
-export const getPageNumbers = (
-  page: number, totalPages: number, reposPerPage: number = REPOS_PER_PAGE,
+export const generatePagesNumeration = (
+  current: number, total: number, width: number = PAGINATION_BUTTONS_COUNT,
 ) => {
-  const shift = Math.floor(reposPerPage / 2);
-  const maybeLeftmost = page > shift ? page - shift : 0;
-  const maybeRightmost = maybeLeftmost + reposPerPage;
+  // eslint-disable-next-line no-param-reassign
+  total = total > MAX_SEARCH_PAGE ? MAX_SEARCH_PAGE : total;
+  const length = total < width ? total : width;
+  const left = Math.max(0, Math.min(total - width, current - Math.floor(width / 2)));
 
-  const rightmost = maybeRightmost < totalPages ? maybeRightmost : totalPages;
-  const rightmostShifted = rightmost > reposPerPage ? rightmost - REPOS_PER_PAGE : rightmost;
+  const items: (number | string)[] = Array.from({ length }, (item, idx) => idx + left);
 
-  const leftmost = maybeLeftmost < rightmostShifted ? maybeLeftmost : rightmostShifted;
-
-  const pages = [];
-  for (let i = leftmost; i < rightmost; i += 1) {
-    pages.push(i + 1);
+  if (items[0] > 0) {
+    items.splice(0, 2, 0, 'prev-more');
   }
 
-  return pages;
+  if (items[items.length - 1] < total - 1) {
+    items.splice(items.length - 1, 2, 'next-more', total - 1);
+  }
+  return items;
 };
 
 export const formatDate = (

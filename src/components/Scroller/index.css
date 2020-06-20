@@ -6,7 +6,8 @@
     bottom: 1rem;
     left: 90%;
     width: 3rem;
-    background-color: #654ff0;
+    background-color: var(--link-blue);
+    background-image: var(--blue-gradient);
     color: var(--white-base);
     border-radius: 1rem;
     opacity: 0.8;
