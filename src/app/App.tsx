@@ -17,6 +17,7 @@ const NotFoundPage = lazy(() => import('components/NotFoundPage'));
 const RepoDetails = lazy(() => import('features/repoDetails/RepoDetails'));
 
 // TODO: cache api calls https://developer.github.com/v3/#conditional-requests
+// TODO: add loader spinner on fetching
 const App = () => {
   const ref = useRef<HTMLHeadElement>(null);
 

@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import { Repo } from 'features/reposList/types';
 import { formatDate } from 'utils/helpers';
 import { RootState } from 'app/rootReducer';
 import 'components/RepoCard/index.css';
 
-const RepoCard = ({
+const RepoCard = memo(({
   id, name, stargazers_count, updated_at, html_url,
 }: Partial<Repo>) => {
   const { t } = useTranslation();
@@ -56,6 +56,6 @@ const RepoCard = ({
       <br />
     </main>
   );
-};
+}, shallowEqual);
 
 export default RepoCard;

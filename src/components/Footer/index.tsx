@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import LanguageSelector from 'features/i18n/LanguageSelector';
 import 'components/Footer/index.css';
 import { PROJECT_REPO_LINK } from 'utils/consts';
 
-const Footer = () => (
+const Footer = memo(() => (
   <footer className="footer">
     <span className="footer__year">
       <a className="icon--purple" href={PROJECT_REPO_LINK}>©</a>
@@ -12,6 +12,6 @@ const Footer = () => (
     </span>
     <LanguageSelector />
   </footer>
-);
+));
 
 export default Footer;

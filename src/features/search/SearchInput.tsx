@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useState, useMemo, useCallback,
+} from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { loadRepos } from 'features/reposList/reposSlice';
@@ -15,11 +17,10 @@ const SearchInput = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const search = useSelector((state: RootState) => state.search.searchTerm);
   const repos = useSelector((state: RootState) => state.repos, shallowEqual);
   const { currentPage, totalPages } = useSelector((state: RootState) => state.pages, shallowEqual);
+  const { searchTerm, isSearching } = useSelector((state: RootState) => state.search, shallowEqual);
   const currentLocale = useSelector((state: RootState) => state.i18n.currentLocale);
-  const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
   /**
    * Used for catching error in error boundary https://github.com/facebook/react/issues/14981#issuecomment-468460187.
@@ -28,14 +29,14 @@ const SearchInput = () => {
    */
   const [, setErrorBoundary] = useState();
 
-  const debouncedSearchTerm = useDebounce(search, INPUT_DEBOUNCE_DELAY);
-  const trimmedSearch = search.trim();
-  const searchTerm = trimmedSearch ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
+  const debouncedSearchTerm = useDebounce(searchTerm, INPUT_DEBOUNCE_DELAY);
+  const trimmedSearch = searchTerm.trim();
+  const search = trimmedSearch ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
 
   useEffect(() => {
     (async () => {
       try {
-        await dispatch(loadRepos(searchTerm, currentPage));
+        await dispatch(loadRepos(search, currentPage));
       } catch (error) {
         setErrorBoundary(() => {
           throw error;
@@ -53,10 +54,10 @@ const SearchInput = () => {
     dispatch(setIsSearching(true));
   }, [dispatch, trimmedSearch, currentPage]);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setCurrentPage(FIRST_PAGE));
     dispatch(setSearchTerm(e.target.value));
-  };
+  }, []);
 
   const reposFound = totalPages > 1 ? totalPages * REPOS_PER_PAGE : Object.keys(repos).length;
 
@@ -81,15 +82,17 @@ const SearchInput = () => {
 
   return (
     <section className="search-input__container">
-      <input
-        id={id}
-        type="text"
-        value={search}
-        placeholder={t('repo_search')}
-        onChange={onChange}
-        className="search-input"
-        aria-label="search"
-      />
+      {useMemo(() => (
+        <input
+          id={id}
+          type="text"
+          value={searchTerm}
+          placeholder={t('repo_search')}
+          onChange={onChange}
+          className="search-input"
+          aria-label="search"
+        />
+      ), [id, searchTerm, onChange, t]) }
       {renderHint()}
     </section>
   );

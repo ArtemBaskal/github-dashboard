@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import MainPageLink from 'components/MainPageLink';
 import 'components/ErrorMessage/index.css';
@@ -7,7 +7,7 @@ type IProps = {
     message: string
 }
 
-const ErrorMessage = ({ message }: IProps) => {
+const ErrorMessage = memo(({ message }: IProps) => {
   const { t } = useTranslation();
   return (
     <div className="error-message__container">
@@ -20,6 +20,6 @@ const ErrorMessage = ({ message }: IProps) => {
       <MainPageLink />
     </div>
   );
-};
+});
 
 export default ErrorMessage;
