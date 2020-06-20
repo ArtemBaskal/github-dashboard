@@ -12,6 +12,7 @@ class ErrorBoundary extends Component<IProps, IState> {
   }
 
   static getDerivedStateFromError(error: string) {
+    sessionStorage.clear();
     return { error };
   }
 

@@ -24,12 +24,11 @@ const SearchInput = () => {
   const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
   const debouncedSearchTerm = useDebounce(search, INPUT_DEBOUNCE_DELAY);
-  const searchTerm = search ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
+  const trimmedSearch = search.trim();
+  const searchTerm = trimmedSearch ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
 
   useEffect(() => {
     (async () => {
-      dispatch(setIsSearching(true));
-
       try {
         await dispatch(loadRepos(searchTerm, page));
       } catch (error) {
@@ -44,6 +43,10 @@ const SearchInput = () => {
   // eslint-disable-next-line
         // eslint-disable-next-line react-hooks/exhaustive-deps
   [dispatch, setIsSearching, debouncedSearchTerm, page]);
+
+  useEffect(() => {
+    dispatch(setIsSearching(true));
+  }, [dispatch, trimmedSearch]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setCurrentPage(FIRST_PAGE));
