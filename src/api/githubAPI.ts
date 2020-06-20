@@ -3,8 +3,8 @@ import { Repo, Contributor } from 'features/reposList/types';
 import { REPOS_PER_PAGE } from 'utils/consts';
 import log from 'utils/log';
 
-const SEARCH_URL = 'https://api.github.com/search/repositories';
-const REPO_URL = 'https://api.github.com/repositories';
+const SEARCH_URL_BASE = 'https://api.github.com/search/repositories';
+const REPO_URL_BASE = 'https://api.github.com/repositories';
 
 export interface GetReposResponse {
     incomplete_results: boolean,
@@ -38,7 +38,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
       headers: {},
     };
 
-    const response = await axios.get<GetReposResponse>(SEARCH_URL, config);
+    const response = await axios.get<GetReposResponse>(SEARCH_URL_BASE, config);
 
     return response.data;
   } catch (e) {
@@ -49,7 +49,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
 
 export const fetchRepoDetails = async (id: string): Promise<Repo | string> => {
   try {
-    const response = await axios.get<Repo>(`${REPO_URL}/${id}`);
+    const response = await axios.get<Repo>(`${REPO_URL_BASE}/${id}`);
 
     return response.data;
   } catch (e) {
@@ -69,6 +69,20 @@ export const fetchContributors = async (url: string): Promise<Contributor[] | st
     const response = await axios.get<Contributor[]>(url);
 
     return response.data;
+  } catch (e) {
+    log.error(e);
+    return e.message;
+  }
+};
+
+/**
+ *  https://developer.github.com/v3/repos/#list-repository-languages
+ */
+export const fetchLanguages = async (url: string): Promise<string[] | [] | string> => {
+  try {
+    const response = await axios.get<{[key:string]: number}>(url);
+
+    return Object.keys(response.data);
   } catch (e) {
     log.error(e);
     return e.message;

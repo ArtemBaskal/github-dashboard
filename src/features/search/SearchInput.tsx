@@ -16,12 +16,17 @@ const SearchInput = () => {
   const { t } = useTranslation();
 
   const search = useSelector((state: RootState) => state.search.searchTerm);
-  const page = useSelector((state: RootState) => state.pages.currentPage);
-  const pages = useSelector((state: RootState) => state.pages.totalPages);
   const repos = useSelector((state: RootState) => state.repos, shallowEqual);
+  const { currentPage, totalPages } = useSelector((state: RootState) => state.pages, shallowEqual);
   const currentLocale = useSelector((state: RootState) => state.i18n.currentLocale);
-  const [, setState] = useState();
   const isSearching = useSelector((state: RootState) => state.search.isSearching);
+
+  /**
+   * Used for catching error in error boundary https://github.com/facebook/react/issues/14981#issuecomment-468460187.
+   * Make sure the component or its ascendant
+   * is wrapped in withErrorBoundary HOC to throw error safely.
+   */
+  const [, setErrorBoundary] = useState();
 
   const debouncedSearchTerm = useDebounce(search, INPUT_DEBOUNCE_DELAY);
   const trimmedSearch = search.trim();
@@ -30,9 +35,9 @@ const SearchInput = () => {
   useEffect(() => {
     (async () => {
       try {
-        await dispatch(loadRepos(searchTerm, page));
+        await dispatch(loadRepos(searchTerm, currentPage));
       } catch (error) {
-        setState(() => {
+        setErrorBoundary(() => {
           throw error;
         });
       }
@@ -41,8 +46,8 @@ const SearchInput = () => {
     })();
   },
   // eslint-disable-next-line
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-  [dispatch, setIsSearching, debouncedSearchTerm, page]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  [dispatch, setIsSearching, debouncedSearchTerm, currentPage]);
 
   useEffect(() => {
     dispatch(setIsSearching(true));
@@ -53,7 +58,7 @@ const SearchInput = () => {
     dispatch(setSearchTerm(e.target.value));
   };
 
-  const reposFound = pages > 1 ? pages * REPOS_PER_PAGE : Object.keys(repos).length;
+  const reposFound = totalPages > 1 ? totalPages * REPOS_PER_PAGE : Object.keys(repos).length;
 
   const id = 'input-search';
 

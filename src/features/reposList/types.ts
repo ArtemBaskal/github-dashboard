@@ -3,12 +3,13 @@ export type Repo = {
     name: string,
     stargazers_count: number,
     updated_at: string,
-    language: string | null,
     description: string,
     owner: Owner,
-    contributors: Contributor[] | undefined,
     html_url: string,
     contributors_url: string,
+    contributors: Contributor[] | undefined,
+    languages_url: string,
+    languages: string[] | undefined,
 }
 
 export type Owner = {
