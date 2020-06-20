@@ -19,11 +19,12 @@ const SearchInput = () => {
   const page = useSelector((state: RootState) => state.pages.currentPage);
   const pages = useSelector((state: RootState) => state.pages.totalPages);
   const repos = useSelector((state: RootState) => state.repos, shallowEqual);
+  const currentLocale = useSelector((state: RootState) => state.i18n.currentLocale);
   const [, setState] = useState();
   const isSearching = useSelector((state: RootState) => state.search.isSearching);
 
   const debouncedSearchTerm = useDebounce(search, INPUT_DEBOUNCE_DELAY);
-  const searchTerm = search ? `name=${debouncedSearchTerm}` : DEFAULT_SEARCH_TERM;
+  const searchTerm = search ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
 
   useEffect(() => {
     (async () => {
@@ -63,7 +64,7 @@ const SearchInput = () => {
           htmlFor={id}
           className="search-input__status"
         >
-          {`${t('repos_found_approximately')} ${reposFound}`}
+          {`${t('repos_found_approximately')} ${reposFound.toLocaleString(currentLocale)}`}
         </label>
       );
     }

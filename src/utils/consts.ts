@@ -13,7 +13,7 @@ export const TOP_CONTRIBUTORS_QUANTITY = 10;
 
 export const FIRST_PAGE = 1;
 
-export const DEFAULT_SEARCH_TERM = 'stars:>100000';
+export const DEFAULT_SEARCH_TERM = 'stars:>-1';
 
 export const DEFAULT_DATE_FORMAT_OPTIONS = {
   year: 'numeric',

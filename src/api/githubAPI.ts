@@ -29,7 +29,7 @@ export const fetchRepos = async (q: string, page: number): Promise<GetReposRespo
   try {
     const config: IConfig = {
       params: {
-        q,
+        q: `${q} in:name`,
         page,
         sort: 'stars',
         order: 'desc',

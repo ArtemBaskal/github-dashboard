@@ -32,12 +32,13 @@ const RepoCard = ({
                 <div className="repo-card__point">
                   <span className="icon--purple">&#9733;</span>
                   &nbsp;
-                  {stargazers_count}
+                  {stargazers_count.toLocaleString(currentLocale)}
                 </div>
         )}
         {updated_at && (
         <span className="repo-card__point repo-card__point--last-edited">
           {`${t('last_update')}:`}
+          &nbsp;
           {`${formatDate(updated_at, currentLocale)}`}
         </span>
         )}
