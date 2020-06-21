@@ -54,8 +54,8 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
 
   return (
     <div className="repo-details__container">
-      {Object.keys(repoDetails).length === 0
-        ? <Loading text={t('loading')} />
+      {isFetchingContributors || isFetchingLanguages
+        ? <Loading />
         : (
           <>
             <MainPageLink />
@@ -68,26 +68,22 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
             <section className="repo-details__owner">
               <h3 className="repo-details__owner--header">{t('owner')}</h3>
               <Profile {...owner} />
-              {isFetchingLanguages
-                ? <Loading text={t('fetching')} />
-                : <TagsContainer tags={languages} />}
+              {!isFetchingLanguages && <TagsContainer tags={languages} />}
               {description && <p className="repo-details__description">{description}</p>}
             </section>
-            {isFetchingContributors
-              ? <Loading text={t('fetching')} />
-              : contributors && contributors.length > 1 && (
-              <section>
-                <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>
-                <ul className="contributors__container">
-                  {contributors.map((
-                    contributor,
-                  ) => <li key={contributor.login}><Profile {...contributor} /></li>)}
-                </ul>
-              </section>
-              )}
+            {!isFetchingContributors && contributors && contributors.length > 1 && (
+            <section>
+              <h3 className="repo-details__header--contributors">{t('top_contributors')}</h3>
+              <ul className="contributors__container">
+                {contributors.map((
+                  contributor,
+                ) => <li key={contributor.login}><Profile {...contributor} /></li>)}
+              </ul>
+            </section>
+            )}
+            <Scroller ref={ref} />
           </>
         )}
-      <Scroller ref={ref} />
     </div>
   );
 }),
