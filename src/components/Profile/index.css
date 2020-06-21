@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.profile__link {
+    outline: 0;
+}
+
 .profile__avatar {
     --side-size: 14rem;
     width: var(--side-size);
@@ -24,9 +28,11 @@
     font-weight: 600;
 }
 
-.profile__avatar:hover {
+.profile__link:hover .profile__avatar,
+.profile__link:focus .profile__avatar {
     opacity: 0.95;
     transform: scale(1.01);
+    outline: 0;
 }
 
 .profile__contributions {
@@ -39,6 +45,8 @@
     font-size: 1.4rem !important;
 }
 
-.profile__avatar:hover ~ .profile__contributions, .profile__contributions:hover {
+.profile__link:hover .profile__avatar ~ .profile__contributions,
+.profile__link:focus .profile__avatar ~ .profile__contributions,
+.profile__contributions:hover {
     color: var(--pink-base);
 }

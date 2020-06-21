@@ -1,17 +1,29 @@
 :root {
     --loader-width: 5rem;
     --loader-height: 5rem;
-    --loader-color-primary: #654ff0;
-    --loader-color-secondary: #eee;
+    --loader-color-primary: var(--purple-base);
+    --loader-color-secondary: var(--white-base);
     --line-width: 1px;
     --animation-duration: 1s;
     --loader-initial-scale: 0.1;
+    --overlay-color: rgba(51, 51, 51, 0.07);
 }
 
-.loader, .loader:before, .loader:after {
+.loader__overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: var(--overlay-color);
+    z-index: var(--medium);
+}
+
+.loader__spinner, .loader__spinner:before, .loader__spinner:after {
     box-sizing: border-box;
     flex-grow: 0;
     flex-shrink: 0;
+    z-index: var(--high);
 }
 
 @keyframes momentum {
@@ -23,7 +35,7 @@
     }
 }
 
-.loader.quantum-spinner {
+.loader__spinner {
     --primary-circle-offset: calc(((var(--loader-width, 100px) * 0.2) / 2) - var(--line-width, 4px));
     --secondary-circle-offset: calc(((var(--loader-width, 100px) * 0.4) / 2) - var(--line-width, 4px));
     width: var(--loader-width, 100px);
@@ -39,7 +51,7 @@
     transform: translate(-50%, -50%);
 }
 
-.quantum-spinner:before {
+.loader__spinner:before {
     content: "";
     position: absolute;
     transform-origin: center center;
@@ -55,7 +67,7 @@
     animation: momentum calc(var(--animation-duration, 1s) * 2) linear infinite;
 }
 
-.quantum-spinner:after {
+.loader__spinner:after {
     content: "";
     position: absolute;
     top: var(--secondary-circle-offset, 20px);

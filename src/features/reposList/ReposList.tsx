@@ -3,6 +3,7 @@ import { RootState } from 'app/rootReducer';
 import { useTranslation } from 'react-i18next';
 import { shallowEqual, useSelector } from 'react-redux';
 import RepoCard from 'components/RepoCard';
+import Loading from 'components/Loading';
 import 'features/reposList/RepoList.css';
 
 const ReposList = (): JSX.Element => {
@@ -32,6 +33,7 @@ const ReposList = (): JSX.Element => {
     <section className="repos-list__container">
       {!isSearching && repos.length === 0 && <h4 className="repos-list__info--empty">{t('nothing_is_found')}</h4>}
       {renderedRepos}
+      {isSearching && <Loading />}
     </section>
   );
 };

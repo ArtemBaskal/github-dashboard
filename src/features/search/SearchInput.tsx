@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useState, useMemo, useCallback,
-} from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { loadRepos } from 'features/reposList/reposSlice';
@@ -31,7 +29,7 @@ const SearchInput = () => {
 
   const trimmedSearch = searchTerm.trim();
   const debouncedSearchTerm = useDebounce(trimmedSearch, INPUT_DEBOUNCE_DELAY);
-  const search = trimmedSearch ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
+  const search = debouncedSearchTerm ? `${debouncedSearchTerm} in:name` : DEFAULT_SEARCH_TERM;
 
   useEffect(() => {
     dispatch(setIsSearching(true));
@@ -50,18 +48,17 @@ const SearchInput = () => {
   },
   // eslint-disable-next-line
         // eslint-disable-next-line react-hooks/exhaustive-deps
-  [dispatch, setIsSearching, debouncedSearchTerm, currentPage]);
+  [dispatch, setIsSearching, search, currentPage]);
 
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     dispatch(setCurrentPage(FIRST_PAGE));
     dispatch(setSearchTerm(value));
-    if (value.trim()) {
-      dispatch(setIsSearching(true));
-    } else {
-      dispatch(setIsSearching(false));
-    }
-  }, [dispatch]);
+  };
+
+  const onBlur = () => {
+    dispatch(setSearchTerm(trimmedSearch));
+  };
 
   const reposFound = totalPages > 1 ? totalPages * REPOS_PER_PAGE : Object.keys(repos).length;
 
@@ -95,8 +92,9 @@ const SearchInput = () => {
           onChange={onChange}
           className="search-input"
           aria-label="search"
+          onBlur={onBlur}
         />
-      ), [id, searchTerm, onChange, t])}
+      ), [id, searchTerm, t])}
       {renderHint()}
     </section>
   );

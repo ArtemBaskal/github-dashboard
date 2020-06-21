@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import 'components/Header/index.css';
 
 const Header = forwardRef<HTMLHeadElement>((props, ref) => (
-  <header className="header" ref={ref}>
+  <header className="header__container" ref={ref}>
     <Link to={ROUTES.MAIN} className="header__link">
       <svg width="50" height="50">
         <image className="header__image" href={`${process.env.PUBLIC_URL}/react-logo.svg`} />

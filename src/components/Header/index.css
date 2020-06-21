@@ -1,4 +1,4 @@
-.header {
+.header__container {
     height: 5rem;
     background-color: var(--purple-base);
     background-image: var(--blue-gradient);
@@ -19,6 +19,7 @@
     width: 100%;
 }
 
-.header__link:hover .header__link--name {
+.header__link:hover .header__link--name,
+.header__link:focus .header__link--name {
     color: var(--light-base);
 }

@@ -15,6 +15,7 @@
     max-width: 100%;
 }
 
-.tag:hover {
+.tag:hover,
+.tag:focus {
     background-image: var(--reverse-purple-gradient);
 }

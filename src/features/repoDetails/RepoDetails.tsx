@@ -77,7 +77,7 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
               <ul className="contributors__container">
                 {contributors.map((
                   contributor,
-                ) => <li key={contributor.login}><Profile {...contributor} /></li>)}
+                ) => <li key={contributor.login} className="contributors__container-item"><Profile {...contributor} /></li>)}
               </ul>
             </section>
             )}

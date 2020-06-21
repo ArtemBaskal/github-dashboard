@@ -15,6 +15,10 @@
     --purple-gradient: linear-gradient(315deg, var(--light-base) 0%, var(--purple-dark) 74%);
     --reverse-purple-gradient: linear-gradient(45deg, var(--light-base) 0%, var(--purple-dark) 74%);
     --blue-gradient: linear-gradient(315deg, var(--light-base) 0%, var(--purple-base) 74%);
+    --low: 1;
+    --medium: 2;
+    --high: 3;
+    --shadow-base: 0 0 0 3px rgba(0, 123, 255, .5);
 }
 
 * {
@@ -45,6 +49,7 @@ body {
     text-overflow: ellipsis;
 }
 
-a:hover {
+a:hover,
+a:focus {
     color: var(--purple-base);
 }

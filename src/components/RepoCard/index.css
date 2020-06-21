@@ -10,6 +10,11 @@
     text-decoration: none;
 }
 
+.repo-card__name:focus {
+    color: var(--purple-base);
+    outline: 0;
+}
+
 .repo-card__name--link {
     color: var(--black-base);
     font-weight: 300;
@@ -20,7 +25,8 @@
     font-weight: 500;
 }
 
-.repo-card__name--link:hover {
+.repo-card__name--link:hover,
+.repo-card__name--link:focus {
     text-decoration: underline;
 }
 

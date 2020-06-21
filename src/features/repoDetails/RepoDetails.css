@@ -7,6 +7,10 @@
     justify-content: center;
 }
 
+.contributors__container--item {
+    outline: 0;
+}
+
 .contributors__container .profile__container {
     width: 14rem;
 }
