@@ -95,7 +95,7 @@ axios.interceptors.request.use((config: Partial<IConfig> = {}) => {
     const { GITHUB_OAUTH_TOKEN } = require('secret.json');
 
     if (!GITHUB_OAUTH_TOKEN) {
-      throw new Error('Read the README Access token section for more details: https://github.com/ArtemBaskal/github-dashboard#access-token');
+      throw new Error('No github OAuth Access Token provided or config field key "GITHUB_OAUTH_TOKEN" is misspelled.');
     }
 
     // eslint-disable-next-line no-param-reassign

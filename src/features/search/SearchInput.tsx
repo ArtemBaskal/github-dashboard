@@ -94,6 +94,8 @@ const SearchInput = () => {
           aria-label="search"
           onBlur={onBlur}
         />
+        // eslint-disable-next-line
+          // eslint-disable-next-line react-hooks/exhaustive-deps
       ), [id, searchTerm, t])}
       {renderHint()}
     </section>
