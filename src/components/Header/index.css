@@ -21,5 +21,5 @@
 
 .header__link:hover .header__link--name,
 .header__link:focus .header__link--name {
-    color: var(--light-base);
+    color: var(--gray-e5);
 }

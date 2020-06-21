@@ -46,7 +46,7 @@ const RepoCard = memo(({
         <div className="repo-card__point">
           <a href={html_url} className="repo-card__name repo-card__name--link" aria-label={t('repo')}>
             <svg className="repo-card__image--octocat">
-              <image href={`${process.env.PUBLIC_URL}/octocat.svg`} width="17" height="17" />
+              <image href={`${process.env.PUBLIC_URL}/github-logo.svg`} width="17" height="17" />
             </svg>
             {new URL(html_url).pathname.slice(1)}
           </a>

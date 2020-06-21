@@ -7,7 +7,7 @@ const Header = forwardRef<HTMLHeadElement>((props, ref) => (
   <header className="header__container" ref={ref}>
     <Link to={ROUTES.MAIN} className="header__link">
       <svg width="50" height="50">
-        <image className="header__image" href={`${process.env.PUBLIC_URL}/react-logo.svg`} />
+        <image className="header__image" href={`${process.env.PUBLIC_URL}/github-logo.svg`} />
       </svg>
       <h2 className="header__link--name">Dashboard</h2>
     </Link>
