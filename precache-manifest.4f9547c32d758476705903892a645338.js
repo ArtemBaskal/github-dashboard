@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f7f0db4ab2cf6da656d49c10994b04bf",
+    "revision": "41d2c2934d02e4d44652dfef3151f5f0",
     "url": "/github-dashboard/index.html"
   },
   {
-    "revision": "0fe875c90abef09ce4cd",
+    "revision": "d5037df613497e027cae",
     "url": "/github-dashboard/static/css/3.1a9809ee.chunk.css"
   },
   {
-    "revision": "6090bc5c916d8015a2bc",
+    "revision": "47336e52240fc9c1d4f9",
     "url": "/github-dashboard/static/css/4.ddbf1631.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/github-dashboard/static/css/5.640e22b8.chunk.css"
   },
   {
-    "revision": "396ee70fed3bfc8dca3d",
-    "url": "/github-dashboard/static/css/main.996cf9ea.chunk.css"
+    "revision": "9e34be095273bf2a222c",
+    "url": "/github-dashboard/static/css/main.f8657705.chunk.css"
   },
   {
     "revision": "9281a30f9604ec49fd7a",
@@ -28,27 +28,27 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/github-dashboard/static/js/2.c1a69b06.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0fe875c90abef09ce4cd",
-    "url": "/github-dashboard/static/js/3.0895b8b2.chunk.js"
+    "revision": "d5037df613497e027cae",
+    "url": "/github-dashboard/static/js/3.6d34f000.chunk.js"
   },
   {
     "revision": "81896c98bac7b5b16ab1d3790da5b937",
-    "url": "/github-dashboard/static/js/3.0895b8b2.chunk.js.LICENSE.txt"
+    "url": "/github-dashboard/static/js/3.6d34f000.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6090bc5c916d8015a2bc",
-    "url": "/github-dashboard/static/js/4.62d78bf7.chunk.js"
+    "revision": "47336e52240fc9c1d4f9",
+    "url": "/github-dashboard/static/js/4.541f5fdc.chunk.js"
   },
   {
     "revision": "3326bd82132e0d93b324",
     "url": "/github-dashboard/static/js/5.cc13b4aa.chunk.js"
   },
   {
-    "revision": "396ee70fed3bfc8dca3d",
-    "url": "/github-dashboard/static/js/main.cf64039b.chunk.js"
+    "revision": "9e34be095273bf2a222c",
+    "url": "/github-dashboard/static/js/main.1263ccac.chunk.js"
   },
   {
-    "revision": "ea490883ca6398bdca26",
-    "url": "/github-dashboard/static/js/runtime-main.cdfd19dd.js"
+    "revision": "a8d4699e8d1a128bbc57",
+    "url": "/github-dashboard/static/js/runtime-main.56a39cc7.js"
   }
 ]);
