@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Иллюстрация к проекту](https://user-images.githubusercontent.com/45331104/85237024-d4806880-b42b-11ea-93e2-96a39db3423a.png)
 
 ### `yarn start`
 - Runs the app in the development mode.<br />
@@ -25,6 +25,8 @@ In order to increase Github API [rate limit](https://developer.github.com/v3/#ra
 
 ## Other scripts
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ### `yarn start:dev`
 - Runs the app ignoring Typescript errors.
 
@@ -32,7 +34,7 @@ In order to increase Github API [rate limit](https://developer.github.com/v3/#ra
 - Builds the app for production.
 
 ### `yarn test`
--Launches the test runner in the interactive watch mode.
+- Launches the test runner in the interactive watch mode.
 
 ### `yarn eject`
 
