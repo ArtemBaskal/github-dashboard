@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,iBACI,aAAc,CACd,eAAgB,CAChB,iBAAkB,CAClB,YACJ,CALA,uBACI,aACJ,CAEA,0BACI,eAAgB,CAChB,iBACJ","file":"5.640e22b8.chunk.css","sourcesContent":[".error-message__header {\n    margin: 1rem 0;\n}\n\n.error-message__container {\n    font-weight: 300;\n    text-align: center;\n}\n"]}
