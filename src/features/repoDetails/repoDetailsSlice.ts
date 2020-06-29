@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from 'app/store';
 import { fetchRepoDetails, fetchContributors, fetchLanguages } from 'api/githubAPI';
 import { Repo, Contributor } from 'features/reposList/types';
-import { TOP_CONTRIBUTORS_QUANTITY } from 'utils/consts';
 
 type Fetching = {
     isFetchingContributors?: boolean,
@@ -50,7 +49,7 @@ const repoDetailSlice = createSlice({
       return state as Repo;
     },
     getRepoContributors: (state, action: PayloadAction<Contributor[]>): Repo => {
-      state.contributors = action.payload.slice(0, TOP_CONTRIBUTORS_QUANTITY).map(({
+      state.contributors = action.payload.map(({
         id, html_url, login, avatar_url, contributions,
       }) => ({
         id, html_url, login, avatar_url, contributions,

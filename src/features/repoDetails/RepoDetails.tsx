@@ -13,6 +13,7 @@ import TagsContainer from 'components/TagsContainer';
 import Scroller from 'components/Scroller';
 import withErrorBoundary from 'utils/HOCs/withErrorBoundary';
 import { loadRepoDetails, resetRepoDetails } from 'features/repoDetails/repoDetailsSlice';
+import { DEFAULT_PAGE_TITLE } from 'utils/consts';
 import 'features/repoDetails/RepoDetails.css';
 
 const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
@@ -23,10 +24,10 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
   const { t } = useTranslation();
 
   /**
-   * Used for catching error in error boundary https://github.com/facebook/react/issues/14981#issuecomment-468460187.
-   * Make sure the component or its ascendant
-   * is wrapped in withErrorBoundary HOC to throw error safely.
-   */
+         * Used for catching error in error boundary https://github.com/facebook/react/issues/14981#issuecomment-468460187.
+         * Make sure the component or its ascendant
+         * is wrapped in withErrorBoundary HOC to throw error safely.
+         */
   const [, setErrorBoundary] = useState();
 
   const repoDetails = useSelector((state: RootState) => state.repoDetails, shallowEqual);
@@ -51,6 +52,15 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
       dispatch(resetRepoDetails());
     };
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (html_url) {
+      document.title = new URL(html_url).pathname.slice(1);
+    }
+    return () => {
+      document.title = DEFAULT_PAGE_TITLE;
+    };
+  }, [html_url]);
 
   return (
     <div className="repo-details__container">
@@ -77,7 +87,11 @@ const RepoDetails = memo(forwardRef<HTMLHeadElement>((props, ref) => {
               <ul className="contributors__container">
                 {contributors.map((
                   contributor,
-                ) => <li key={contributor.login} className="contributors__container-item"><Profile {...contributor} /></li>)}
+                ) => (
+                  <li key={contributor.login} className="contributors__container-item">
+                    <Profile {...contributor} />
+                  </li>
+                ))}
               </ul>
             </section>
             )}
