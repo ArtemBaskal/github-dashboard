@@ -1,14 +1,14 @@
-.tag {
-    color: var(--white-base);
+.tag, tag:visited {
+    color: var(--white-base) !important;
     padding: 0.2rem 0.6rem;
     margin: 0.3rem;
     border-radius: 1rem;
     font-weight: 200;
     background-color: var(--light-base);
     background-image: var(--purple-gradient);
-    user-select: all;
     display: inline-block;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .tags__container {
@@ -16,6 +16,12 @@
 }
 
 .tag:hover,
-.tag:focus {
+.tag:focus,
+.tab:visited:hover {
     background-image: var(--reverse-purple-gradient);
+}
+
+.tag:focus {
+    box-shadow: var(--shadow-base);
+    outline: 0;
 }

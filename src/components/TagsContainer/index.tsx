@@ -1,11 +1,23 @@
 import React, { memo } from 'react';
-import { shallowEqual } from 'react-redux';
 import 'components/TagsContainer/index.css';
 
-const TagsContainer = memo(({ tags }: { tags: string[] | void }) => (
+type IProps = { tags: string[], html_url: string };
+
+const TagsContainer = memo(({ tags, html_url }: IProps) => (
   <section className="tags__container">
-    {tags ? tags.map((tag) => <h6 key={tag} className="tag" title={tag}>{tag}</h6>) : null}
+    {tags.map((tag) => (
+      <a
+        href={`${html_url}/search?l=${tag}`}
+        className="tag"
+        key={tag}
+        title={tag}
+        target="__blank"
+        rel="noopener noreferrer"
+      >
+        {tag}
+      </a>
+    ))}
   </section>
-), shallowEqual);
+));
 
 export default TagsContainer;
