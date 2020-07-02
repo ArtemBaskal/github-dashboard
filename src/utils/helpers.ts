@@ -37,3 +37,7 @@ export const saveInSessionStorage = (key: string, value: string): string => {
     return value;
   }
 };
+
+export const setHtmlTagLangAttribute = (language: string) => {
+  window.document.documentElement.lang = language;
+};

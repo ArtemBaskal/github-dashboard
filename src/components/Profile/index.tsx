@@ -10,7 +10,7 @@ const Profile = memo(({
   const { t } = useTranslation();
   return (
     <figcaption className="profile__container">
-      <a href={html_url} className="profile__link">
+      <a href={html_url} className="profile__link" target="_blank" rel="noopener noreferrer">
         <img src={avatar_url} alt={login} className="profile__avatar" />
         <figure className="profile__login">{login}</figure>
         {contributions

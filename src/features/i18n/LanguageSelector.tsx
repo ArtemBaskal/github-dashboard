@@ -5,6 +5,7 @@ import i18n from 'utils/i18n';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'app/rootReducer';
 import { setCurrentLocale } from 'features/i18n/i18nSlice';
+import { setHtmlTagLangAttribute } from 'utils/helpers';
 import 'features/i18n/LanguageSelector.css';
 
 const LanguageSelector = () => {
@@ -12,9 +13,10 @@ const LanguageSelector = () => {
   const dispatch = useDispatch();
   const currentLanguage = useSelector((state: RootState) => state.i18n.currentLocale);
 
-  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeLanguage = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
-    i18n.changeLanguage(value);
+    await i18n.changeLanguage(value);
+    setHtmlTagLangAttribute(value);
     dispatch(setCurrentLocale(value));
   };
 
