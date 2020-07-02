@@ -1,17 +1,28 @@
-.language-selector {
+.language-selector__container {
     position: absolute;
     right: 5rem;
     top: 1.8rem;
     font-weight: 100;
     font-size: 1.6rem;
+    border-radius: 50%;
 }
 
-.select.select--language {
+.language-selector {
     margin-left: 1rem;
     height: 3rem;
-    padding: 0 3rem;
+    padding: 0 1.5rem;
     cursor: pointer;
     background-color: var(--white-base);
     border: 0.2px solid var(--gray-9);
-    border-radius: 2px;
+    border-radius: 10rem;
+}
+
+.language-selector option {
+    outline: 0;
+    background-color: transparent;
+}
+
+.language-selector:focus {
+    box-shadow: var(--shadow-base);
+    outline: 0;
 }

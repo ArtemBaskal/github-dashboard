@@ -7,12 +7,12 @@
     border: none;
     cursor: pointer;
     position: sticky;
-    bottom: 6%;
-    left: 91%;
+    bottom: 5%;
+    left: 85%;
     background-color: var(--link-blue);
     background-image: var(--blue-gradient);
     color: var(--white-base);
-    opacity: 0.8;
+    opacity: 0.7;
     transition-property: opacity;
     transition-duration: 200ms;
     transition-timing-function: ease-in-out;
